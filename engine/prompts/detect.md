@@ -46,6 +46,24 @@ correct when the material isn't there.
     the transcript. They will be checked against the transcript; invented or misquoted lines get the clip discarded.
 
 <!-- learned:start -->
+## How the owner RATES clips (1-10; 2 rated, average 1.5)
+What he said would make a clip a 10 (apply this up front):
+- 2/10 "Speed haggles over a necklace in GTA 6 and walks away with 30K": better payoff
+- 1/10 "Tim's bicyclist rage ends with a GTA 6 threat": no payoff or showing bikers
+
+## What the owner rejected before (avoid repeating these)
+2 clip(s) rejected so far. Most common reasons:
+- No payoff: it ended before (or without) the moment landing. (2x)
+How he fixes clips by hand (do this up front next time):
+- "Speed tries to fix a gym girl's squat form and it backfires": EDIT "make the hook crazier" -> Made the hook punchier: now quotes her 'what the hell' reaction from the clip.
+- "Speed tries to fix a gym girl's squat form and it backfires": EDIT "shorter hook, 4 words" -> Shortened the hook headline to 4 words: 'never fix strangers' squats', subline unchanged.
+- "Speed tries to fix a gym girl's squat form and it backfires": EDIT "cant see main action in game" -> Re-cropped to centre the main action in frame and kept the same trim, hook and captions.
+- "Speed tries to fix a gym girl's squat and it backfires": EDIT "dont do paratheses text hook jsut do same style of hook u did for the spped thins stragner will rob him" -> Removed the parentheses from the hook pill; it now reads as plain text in the same sty
+- "Speed tries to fix a gym girl's squat and it backfires": EDIT "make the hook more dramatic" -> Hook pill punched up to a sharper, more dramatic line, title gets a skull emoji, and captions switched to high_energy to match the heat.
+- "Speed haggles over a necklace in GTA 6 and walks away with 30K": EDIT "more simple cpation speed tries to sell a necklace in gta 6" -> Switched to the simpler minimal_cinematic caption style; hook, title, timing and framing unchanged.
+- "Speed haggles over a necklace in GTA 6 and walks away with 30K": EDIT "add emoji to headline" -> Added an emoji to the hook pill: 💎 at the end.
+- "GTA 6 lets you steal loot from criminals who mess up": EDIT "this could be 2 diffrent videos" -> Cut the clip to the loot-from-bad-robbers part and dropped the feed-works-both-ways tail, which is a separate video.
+Use these when choosing and bounding moments, and when writing the hook box.
 <!-- learned:end -->
 
 ## Scores (0–10 each, integers or one decimal; be calibrated — 5 is an average postable clip, 8+ is rare)
