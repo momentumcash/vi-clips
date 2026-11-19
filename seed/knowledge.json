@@ -1,0 +1,381 @@
+{
+ "updated": "2026-11-19T07:42:23+00:00",
+ "principles": [
+  {
+   "id": "c8859661",
+   "category": "hook",
+   "title": "Open on the surprise, not the setup",
+   "rule": "Frame one is the conflict itself. No intros, no \"so\", no \"hey guys\".",
+   "why": "Viewers decide in the first second; setup spends that second on nothing.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Clipper research (Reddit brief)",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "0ad8e1f2",
+   "category": "hook",
+   "title": "A hook opens a loop",
+   "rule": "If the first line answers itself it's a caption, not a hook. Cut before the answer.",
+   "why": "People stay to close a question. A complete thought gives them a reason to leave.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Creator edits, kept-hooks ledger",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "ea7b21d1",
+   "category": "hook",
+   "title": "Talk to the viewer, not about yourself",
+   "rule": "Best openers: a question to the viewer, an emotion word, an imperative. Worst: opening on \"I\".",
+   "why": "\"Nobody cares about you, they're watching for value for them.\"",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Creator edits",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "fa3db3e5",
+   "category": "hook",
+   "title": "Specific beats general",
+   "rule": "A concrete number or a named thing beats a broad claim.",
+   "why": "Specifics read as true and make the viewer want the rest.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Clipper research",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "21bb869f",
+   "category": "hook",
+   "title": "The withheld part must still read as a sentence",
+   "rule": "A teaser that only makes sense after the payoff is noise, not a loop.",
+   "why": "\"That hook makes no sense\" on a half-sentence teaser.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Creator edits",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "21a7a219",
+   "category": "hook",
+   "title": "Lead with the visual flash",
+   "rule": "If the moment has a crash, reveal or wipeout, open on it near-wordless and hard-cut in.",
+   "why": "Shorter and poppier wins; talking cold-opens are the fallback.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Creator edits",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "6debc59b",
+   "category": "retention",
+   "title": "Open the next loop before closing this one",
+   "rule": "The hook only opens the first loop. Ask the next question before (or as) you answer the current one.",
+   "why": "Viewers leave the moment a loop closes.",
+   "confidence": "proven",
+   "source": {
+    "label": "Library: open and close loops",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "1f0d3c00",
+   "category": "retention",
+   "title": "Something changes every ~3 seconds",
+   "rule": "A cut, a zoom, a new caption beat or a reaction at least every 3 seconds.",
+   "why": "Static stretches are where the swipe happens.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Clipper research",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "a7f628a9",
+   "category": "retention",
+   "title": "The body pays off without outside context",
+   "rule": "A clip must make sense to someone who never saw the long video.",
+   "why": "Inside jokes and references to earlier parts lose cold viewers.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Clipper research + creator edits",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "18b7e1d3",
+   "category": "retention",
+   "title": "Show what the words say",
+   "rule": "If the line talks about a thing, that thing is on screen every frame it's mentioned.",
+   "why": "Mismatch between words and picture breaks trust and attention.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Creator edits",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "1b8741a7",
+   "category": "picking",
+   "title": "Pick moments by picture first",
+   "rule": "Sweep the video as pictures before reading the transcript; the best moments often have weak words.",
+   "why": "A bus squeezing past inches away was transcribed as \"Like this.\"",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Creator edits",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "d65b47f3",
+   "category": "picking",
+   "title": "Three passes, not one score",
+   "rule": "1) 1-3s of tension, 2) the body pays it off alone, 3) motion every ~3s. All three must pass.",
+   "why": "One blended score hides a missing piece.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Clipper research",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "33bc1297",
+   "category": "picking",
+   "title": "One subject, one clip",
+   "rule": "Two clips about the same moment compete; find a genuinely separate moment instead.",
+   "why": "Repeats read as filler to the algorithm and the viewer.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Creator edits",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "8f9fcb5c",
+   "category": "picking",
+   "title": "Topic beats channel size",
+   "rule": "A video that pulls many times its channel's subscribers proves the topic carried it. Clip those topics.",
+   "why": "Outliers on small channels are the clearest signal of demand.",
+   "confidence": "research",
+   "source": {
+    "label": "GTA VI YouTube guide (Algrow outlier method)",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "9444c540",
+   "category": "editing",
+   "title": "Cut on measured silence",
+   "rule": "Join cuts on real silence in the waveform, never mid-word.",
+   "why": "Clipped words sound cheap and break flow.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Measured-silence cutting pipeline",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "7ef14f1e",
+   "category": "editing",
+   "title": "Length is what the moment needs",
+   "rule": "Most kept hooks run 2-4s; the clip ends when the payoff lands. Never truncate a word to hit a number.",
+   "why": "\"Can you make it longer? have more value.\"",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Creator edits",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "67a523fb",
+   "category": "editing",
+   "title": "Authentic or cinematic, never the middle",
+   "rule": "Raw phone-real and high-end cinematic both win; the AI-looking middle loses.",
+   "why": "Viewers punish anything that looks mass-produced.",
+   "confidence": "proven",
+   "source": {
+    "label": "Library: five levels of AI",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "5657cbce",
+   "category": "captions",
+   "title": "Captions inside the safe zone",
+   "rule": "Keep words clear of TikTok's UI: off the bottom ~20% and the right-side buttons.",
+   "why": "Covered captions get swiped.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Short-form practice",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "3eb892de",
+   "category": "captions",
+   "title": "Big, few words, one active word",
+   "rule": "Short caption chunks with the spoken word highlighted.",
+   "why": "Most people watch muted at first; the eye follows the highlight.",
+   "confidence": "his-rule",
+   "source": {
+    "label": "Short-form practice",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "291662cf",
+   "category": "format",
+   "title": "Copy what already worked",
+   "rule": "Every clip idea should trace back to a format that already went viral.",
+   "why": "Proven demand beats guessing.",
+   "confidence": "proven",
+   "source": {
+    "label": "Content rules",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "e5cd0f5b",
+   "category": "format",
+   "title": "Make it yours, don't reupload",
+   "rule": "Copy the format, topic and title style, then add your own edit and commentary.",
+   "why": "Reused or barely changed footage gets demonetized as reused content.",
+   "confidence": "research",
+   "source": {
+    "label": "GTA VI YouTube guide / YouTube reused-content policy",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "a09d17a4",
+   "category": "distribution",
+   "title": "Don't spam uploads",
+   "rule": "Space posts out (about one a day per account) instead of dumping a batch.",
+   "why": "Bursts read as low quality and split the audience's attention.",
+   "confidence": "research",
+   "source": {
+    "label": "GTA VI YouTube guide",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "b592cd01",
+   "category": "distribution",
+   "title": "Break your own videos down",
+   "rule": "Use AI to break your own posts down part by part (hook, on-screen, ending) against their numbers.",
+   "why": "Automating copies of others plateaus; learning from your own data compounds.",
+   "confidence": "proven",
+   "source": {
+    "label": "Library: five levels of AI",
+    "url": null
+   },
+   "added": "2026-11-19T07:40:31+00:00"
+  },
+  {
+   "id": "073d1f87",
+   "category": "distribution",
+   "title": "Test risky clips as trial reels first",
+   "rule": "Post clips you're unsure about as Instagram trial reels, so non-followers see them first. Read the engagement numbers after about 24 hours, then share the winners with followers by hand or let auto-share do it.",
+   "why": "Instagram shows trial reels to non-followers first and auto-shares a trial to followers only if its views in the first 72 hours are good, so a weak clip never reaches your main audience.",
+   "confidence": "research",
+   "source": {
+    "label": "Instagram for Creators",
+    "url": "https://creators.instagram.com/blog/instagram-trial-reels"
+   },
+   "added": "2026-11-19T07:42:23+00:00"
+  },
+  {
+   "id": "99cc8e7a",
+   "category": "distribution",
+   "title": "Link every Short to its full episode",
+   "rule": "On each Short cut from a long video, set the Related Video in YouTube Studio to the source episode or stream. Don't count on a URL in the description.",
+   "why": "The related video shows as a clickable link under the channel handle in the Shorts player, so a viral clip can send viewers to the long-form video.",
+   "confidence": "research",
+   "source": {
+    "label": "YouTube Help",
+    "url": "https://support.google.com/youtube/answer/14075157?hl=en"
+   },
+   "added": "2026-11-19T07:42:23+00:00"
+  },
+  {
+   "id": "012927b3",
+   "category": "picking",
+   "title": "Pick clips that fill search gaps",
+   "rule": "Check TikTok Creator Search Insights' content gap topics for your niche, then pull the moments from the long video that answer those searches. Use the searched words in the caption and on-screen text.",
+   "why": "TikTok says content gap topics are searched often but covered by few videos, and in-demand search topics raise a video's search value in the Creator Rewards Program.",
+   "confidence": "research",
+   "source": {
+    "label": "TikTok Newsroom",
+    "url": "https://newsroom.tiktok.com/en-us/creator-search-insights"
+   },
+   "added": "2026-11-19T07:42:23+00:00"
+  },
+  {
+   "id": "c0388b1f",
+   "category": "picking",
+   "title": "Pick moments people would send someone",
+   "rule": "Score candidate moments by whether a viewer would send them to a specific friend: a hot take, a relatable line, a useful tip or an 'I have to show you this' reaction. Favour those over clips that are only likeable.",
+   "why": "Instagram lists the chance a viewer reshares a reel among its most important Reels predictions, next to watching to the end, liking and visiting the audio page.",
+   "confidence": "research",
+   "source": {
+    "label": "Adam Mosseri, About Instagram",
+    "url": "https://about.instagram.com/blog/announcements/instagram-ranking-explained"
+   },
+   "added": "2026-11-19T07:42:23+00:00"
+  },
+  {
+   "id": "321816ef",
+   "category": "hook",
+   "title": "Grade hooks by engaged views, not views",
+   "rule": "To compare hooks, divide engaged views by views for each clip, not raw views. A low ratio means people swipe away in the first seconds, so recut the opening.",
+   "why": "Since August 24, 2026, YouTube counts a view the moment a Short starts to play and only counts an engaged view if it keeps playing past the first seconds, so raw views no longer show whether a hook worked.",
+   "confidence": "research",
+   "source": {
+    "label": "YouTube Official Blog",
+    "url": "https://blog.youtube/inside-youtube/engaged-views-youtube-explained/"
+   },
+   "added": "2026-11-19T07:42:23+00:00"
+  }
+ ],
+ "log": [
+  {
+   "date": "2026-11-19T07:42:23+00:00",
+   "added": 5,
+   "note": "Web research update"
+  },
+  {
+   "date": "2026-11-19T07:40:31+00:00",
+   "added": 23,
+   "note": "Seeded with the starter rules"
+  }
+ ]
+}

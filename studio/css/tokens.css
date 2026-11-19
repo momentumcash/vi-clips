@@ -1,0 +1,50 @@
+/* ClipForge — tokens.
+   Material: a colour-grading bay. Warm graphite ground, off-white ink, video is the brightest thing.
+   Accent: one broadcast tally (amber-orange). Only for: selected clip, score heat on the spine,
+   the primary button, live job progress. Never a large fill, never body text. */
+:root {
+  --ground: #141413;
+  --panel: #1a1a18;
+  --panel-2: #1c1c1a;
+  --raised: #262624;
+  --raised-2: #2f2f2c;
+  --well: #0f0f0e;            /* behind video only */
+
+  --line: rgba(236, 234, 228, 0.07);
+  --line-2: rgba(236, 234, 228, 0.12);
+  --line-3: rgba(236, 234, 228, 0.2);
+
+  --ink: #ecEAE4;
+  --ink-2: #a19f97;           /* secondary — ≥ 4.5:1 on ground, panel and raised */
+  --ink-3: #8a8881;           /* tertiary — context text, rulers; ≥ 4.5:1 on ground + panel */
+
+  --tally: #ff6a2b;
+  --tally-ink: #1b0c04;
+  --tally-soft: rgba(255, 106, 43, 0.14);
+  --tally-line: rgba(255, 106, 43, 0.55);
+
+  /* status dots — muted, small */
+  --s-ok: #86b07a;
+  --s-warn: #d4a24a;
+  --s-bad: #e06a55;
+  --s-idle: #6d6b65;
+
+  --font-ui: "Instrument Sans", "Hanken Grotesk", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --fs-xs: 11px;
+  --fs-s: 12px;
+  --fs-m: 13px;
+  --fs-l: 15px;
+  --fs-xl: 19px;
+
+  --r1: 3px;
+  --r2: 6px;
+
+  --rail-w: 184px;
+  --top-h: 56px;
+  --spine-h: 156px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --t: 160ms;
+}

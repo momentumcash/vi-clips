@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VI Clips Studio</title>
+  <meta name="color-scheme" content="light">
+  <script>
+    // a dropped connection must not leave the page unstyled: retry a failed stylesheet twice
+    function cfRetry(l) { var n = +(l.dataset.n || 0); if (n < 2) { l.dataset.n = n + 1; setTimeout(function () { l.href = l.href.split("?")[0] + "?r=" + Date.now(); }, 300 * (n + 1)); } }
+  </script>
+  <link rel="stylesheet" href="css/tokens.css" onerror="cfRetry(this)">
+  <link rel="stylesheet" href="css/base.css" onerror="cfRetry(this)">
+  <link rel="stylesheet" href="css/studio.css" onerror="cfRetry(this)">
+  <link rel="stylesheet" href="css/pages.css" onerror="cfRetry(this)">
+  <link rel="stylesheet" href="css/v2.css" onerror="cfRetry(this)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%23ffffff'/%3E%3Crect x='5' y='2.5' width='6' height='11' rx='1.6' fill='none' stroke='%23ff6a2b' stroke-width='1.4'/%3E%3C/svg%3E">
+</head>
+<body>
+  <div class="wall" aria-hidden="true"></div>
+  <div class="banner" id="banner" role="status" hidden></div>
+  <main class="desk">
+    <div class="badges" aria-label="Made for">
+      <span class="badge"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9.5 2.5v7.2a2.6 2.6 0 1 1-2.6-2.6"/><path d="M9.5 2.5c.4 1.8 1.6 2.9 3.4 3.1"/></svg>TikTok</span>
+      <span class="badge"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="2.5" width="11" height="11" rx="3.2"/><circle cx="8" cy="8" r="2.6"/></svg>Reels</span>
+      <span class="badge"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="2.5" y="3.5" width="11" height="9" rx="2.6"/><path d="M7 6.2v3.6L10 8z" fill="currentColor"/></svg>Shorts</span>
+    </div>
+    <header class="hero-card">
+      <div>
+        <h1>Clip Generator <span class="chip" id="chip" hidden><i></i><span></span></span></h1>
+        <p>Long stream in, best clips out</p>
+        <p class="ticker mono" id="ticker" hidden></p>
+      </div>
+      <span class="tagline">Find · Cut · Export</span>
+    </header>
+    <section class="stage" id="stage" aria-label="Preview"></section>
+    <section class="finder" id="finder" aria-label="Clips"></section>
+  </main>
+  <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

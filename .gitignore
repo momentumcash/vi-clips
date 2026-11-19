@@ -1,0 +1,14 @@
+# runtime data (DB, downloads, renders, live chunks, cookies, logs)
+data/*
+!data/.gitkeep
+.venv/
+__pycache__/
+*.pyc
+*.bak*
+*.mp4
+*.mov
+*.wav
+*.log
+yt-cookies.txt
+cookies*.txt
+.DS_Store

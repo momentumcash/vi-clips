@@ -1,0 +1,2862 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="brand/vi-icon.png">
+<script src="/config.js"></script>
+<title>VI Clips</title>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@500,600,700&f[]=satoshi@400,500,700,900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<style>
+/* Hallmark · macrostructure: Bento Grid · tone: atmospheric · anchor hue: ember */
+:root {
+  color-scheme:dark;
+  --gl-card:rgba(14,14,16,.72);
+  --gl-pill:rgba(14,14,16,.55);
+  --gl-tile:rgba(255,255,255,.08);
+  --gl-rim:rgba(255,255,255,.10);
+  --gl-tint:rgba(6,6,8,.38);
+  --gl-sel:#F2F1EF;
+  --gl-shadow:inset 0 0 0 1px var(--gl-rim),0 24px 54px -22px rgba(0,0,0,.45);
+  --gl-blur:blur(22px) saturate(1.1);
+  --ink:#111;
+  --s1:var(--gl-tile);
+  --s2:var(--gl-tile);
+  --s3:rgba(255,255,255,.12);
+  --edge:var(--gl-rim);
+  --edge-strong:rgba(255,255,255,.14);
+  --text:var(--gl-sel);
+  --muted:#A3A09B;
+  --faint:#666;
+  --ember:#F5822E;
+  --ember-light:var(--ember);
+  --kraft:var(--text);
+  --green:#3EE08F;
+  --red:#FF3355;
+  --ok-edge:rgba(62,224,143,.24);
+  --ok-surface:rgba(62,224,143,.07);
+  --yt-surface:rgba(6,6,8,.28);
+  --yt-glow:rgba(255,51,85,.13);
+  --yt-soft:rgba(255,51,85,.16);
+  --ember-halo:rgba(245,130,46,.15);
+  --highlight:rgba(255,255,255,.05);
+  --image-edge:rgba(255,255,255,.08);
+  --image-shade:rgba(6,6,8,.88);
+  --image-label:rgba(14,14,16,.78);
+  --shadow-opaque:#060608;
+  --shadow-tint:rgba(0,0,0,.5);
+  --dialog-veil:rgba(6,6,8,.45);
+  --glass-chip:var(--gl-tile);
+  --glass-hover:rgba(255,255,255,.16);
+  --rim-top:rgba(255,255,255,.42);
+  --top-highlight:inset 0 1px 0 var(--highlight);
+  --gap:16px;
+  --radius:20px;
+  --tile-radius:14px;
+  --sidebar-closed:96px;
+  --sidebar-open:264px;
+  --sidebar-margin:16px;
+  --content-inset:calc(var(--sidebar-closed) + var(--sidebar-margin) + 16px);
+  --sidebar-ease:cubic-bezier(.22,1,.36,1);
+  --sidebar-glide:cubic-bezier(.32,.72,0,1);
+  --bar:44px;
+  --display:Switzer,Satoshi,system-ui,sans-serif;
+  --body-font:Satoshi,system-ui,sans-serif;
+}
+* { box-sizing:border-box }
+[hidden] { display:none !important }
+body { margin:0; background:#0e0e10; color:var(--text); font:500 13px var(--body-font) }
+button,input,select { font:inherit }
+button { cursor:pointer; color:inherit }
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible { outline:2px solid var(--text); outline-offset:3px }
+button:disabled { opacity:.45; cursor:default }
+img { display:block; width:100%; height:100%; object-fit:cover }
+svg { width:18px; height:18px; flex:none; vertical-align:middle }
+h1,h2,h3,p { margin:0 }
+h1,h2,h3 { font:600 28px/1.08 var(--display); letter-spacing:-.02em }
+small,.muted { color:var(--muted) }
+.accent { color:var(--ember-light) }
+.good { color:var(--green) }
+.eyebrow { color:var(--muted); font-size:11px; font-weight:600 }
+main { margin-left:var(--content-inset); min-width:0 }
+.screen { padding:16px 18px 18px 0 }
+.welcome { display:flex; align-items:center; gap:10px; margin-bottom:var(--gap) }
+.welcome time { margin-left:auto; color:var(--muted); font-size:11px }
+.chip { display:inline-flex; align-items:center; gap:5px; border:1px solid var(--edge-strong); background:var(--s2); color:var(--ember-light); border-radius:5px; padding:3px 6px; font-size:10px; font-weight:900; line-height:1.2 }
+.panel { min-width:0; border-radius:var(--radius); background:var(--gl-card); box-shadow:var(--gl-shadow); overflow:hidden }
+.btn { display:inline-flex; justify-content:center; align-items:center; gap:6px; min-height:32px; border-radius:10px; padding:6px 10px; white-space:nowrap; font-size:11px; font-weight:900 }
+.ghost { border:1px solid var(--edge-strong); background:var(--glass-chip) }
+.btn { transition:transform 150ms ease,filter 150ms ease }
+.btn:hover { transform:translateY(-1px); filter:brightness(1.08) }
+.btn:active { transform:translateY(1px) }
+.launch { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:var(--gap); margin-bottom:var(--gap) }
+.intro { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding-left:4px; gap:10px }
+.intro h1 { font-size:43px }
+.drop { position:relative; display:grid; place-content:center; justify-items:center; gap:7px; overflow:hidden; border:0; border-radius:var(--radius); background:var(--gl-card); box-shadow:var(--gl-shadow) }
+.drop:hover,.drop.drag,.dropzone.drag { border-color:var(--rim-top); background:var(--s3) }
+.drop strong { font:600 22px var(--display); letter-spacing:-.02em }
+.drop > :not(.wave) { z-index:1 }
+.upload-circle { display:grid; place-items:center; width:32px; height:32px; border:1px solid var(--edge-strong); border-radius:50%; background:var(--s3); color:var(--ember-light) }
+.wave { display:flex; align-items:center; gap:2px; height:40px; overflow:hidden }
+.wave i { flex:1; min-width:1px; background:rgba(255,255,255,.24); border-radius:1px }
+.drop .wave { position:absolute; width:calc(100% - 20px); left:10px; top:50%; transform:translateY(-50%); opacity:.42; mask-image:linear-gradient(90deg,transparent,var(--shadow-opaque) 17%,var(--shadow-opaque) 83%,transparent) }
+.drop small { background:var(--s2); border:1px solid var(--edge-strong); border-radius:4px; padding:2px 6px }
+.projects { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-template-rows:repeat(2,minmax(0,1fr)); gap:6px; padding:8px }
+.project { position:relative; border:1px solid var(--edge-strong); padding:0; border-radius:6px; overflow:hidden; min-height:64px; text-align:left; background:var(--s2) }
+.project img,.feature-art img { position:absolute; inset:0 }
+.project:after,.feature-art:after { content:""; position:absolute; inset:0; background:linear-gradient(transparent 32%,var(--image-shade)); pointer-events:none }
+.project span,.project b { position:absolute; left:5px; right:4px; z-index:1; white-space:nowrap; text-overflow:ellipsis; overflow:hidden }
+.project span { top:5px; font-size:8px; text-shadow:0 1px 5px var(--shadow-opaque) }
+.project b { bottom:5px; font-size:10px }
+.project.all { display:grid; place-content:center; text-align:center; color:var(--text) }
+.project.all:after { display:none }
+.project.all strong { font-size:25px; line-height:1; color:#F5F2ED }
+.project.all small { font-size:9px }
+.dashboard { display:grid; grid-template-columns:minmax(0,1fr) minmax(236px,23%); gap:var(--gap); align-items:start }
+.discovery { grid-column:1/-1; padding:10px; display:grid; grid-template-columns:minmax(0,1fr) minmax(170px,30%); gap:12px; align-items:stretch }
+.discovery-hero,.feature-art { position:relative; overflow:hidden; border-radius:7px; background:var(--s2) }
+.discovery-hero { min-height:180px }
+.yt { display:inline-grid; place-items:center; color:var(--text); background:var(--s3); width:25px; height:18px; border-radius:5px; flex:none }
+.yt svg { width:12px; height:12px }
+.hero-frames { position:absolute; inset:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); height:100%; gap:2px; background:var(--ink) }
+.discovery-copy { display:flex; justify-content:center; flex-direction:column; gap:8px; min-width:0 }
+.discovery-copy h2 { font-size:clamp(23px,2.3vw,34px) }
+.discovery-copy p { color:var(--muted); font-size:11px }
+.link-form { display:flex; gap:5px; align-items:stretch }
+input[type=text],input[type=url] { width:100%; min-width:0; color:var(--text); border:1px solid var(--edge-strong); border-radius:10px; background:var(--ink); padding:6px 8px; font-size:11px }
+.link-form { flex-wrap:wrap }
+.link-form input { flex:1 1 110px }
+.link-form button { flex:1 0 auto }
+.feature { height:164px; display:flex; flex-direction:column; padding:8px; gap:7px }
+.feature h3 { font:600 20px/1.1 var(--display); letter-spacing:-.02em }
+.feature-art { flex:1; min-height:0 }
+.feature-art > .overlay { position:absolute; z-index:1; inset:auto 7px 7px; display:grid; gap:3px }
+.feature-art .top-tag { position:absolute; z-index:1; top:6px; left:6px }
+.feature-art .overlay strong { font-size:13px; line-height:1.1 }
+.feature-art .overlay small { color:var(--text); font-size:10px }
+.feature .mosaic { flex:1; min-height:0 }
+.mosaic { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:repeat(3,minmax(0,1fr)); gap:3px; overflow:hidden }
+.mosaic img { min-height:0; border-radius:3px }
+.calendar { grid-template-columns:repeat(6,minmax(0,1fr)) }
+.feature .chip { align-self:flex-start; max-width:100%; font-size:9px }
+.plan-badge { color:var(--green); border-color:var(--ok-edge); background:var(--ok-surface) }
+.thumb-show { display:flex; align-items:center; justify-content:center; flex:1; min-height:0; padding:4px; background:linear-gradient(135deg,var(--s2),var(--s1)); border-radius:8px }
+.thumb-show img { height:100%; width:auto; max-width:100%; object-fit:contain; border-radius:5px }
+.channel-art img { object-position:50% 38% }
+.social { display:flex; gap:4px }
+.social button { padding:3px; background:var(--s2); border:1px solid var(--edge-strong); border-radius:50%; font-size:10px; line-height:1 }
+.social svg { width:12px; height:12px }
+.claude { flex:1; min-height:0; display:grid; align-content:start; gap:4px; font-size:10px }
+.claude b { color:var(--kraft) }
+.claude p { border:1px solid var(--edge-strong); border-radius:6px; padding:4px 6px; background:var(--s1); line-height:1.2 }
+.profile { display:flex; align-items:center; gap:6px; font-size:10px; min-width:0 }
+.profile img { width:26px; height:26px; border-radius:50%; border:2px solid var(--edge-strong) }
+.profile small { display:block; font-size:9px }
+.profile button { margin-left:auto }
+.vault-prompt { color:var(--muted); display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.stats { padding:12px; display:flex; flex-direction:column; gap:12px; min-height:560px }
+.number { font-size:48px; line-height:.98; font-weight:900; font-variant-numeric:tabular-nums; color:var(--text) }
+.number span { font-size:16px; color:#F5F2ED }
+.deadline { display:flex; gap:8px; align-items:flex-end }
+.deadline small { font-size:10px; max-width:85px }
+.rings { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px }
+.meter { display:grid; justify-items:center; align-content:start; gap:5px; text-align:center; font-size:9px; color:var(--muted) }
+.ring { width:50px; height:50px; display:grid; align-content:center; border-radius:50%; border:3px solid var(--edge-strong); border-top-color:var(--ember-light); background:var(--s1); font-weight:900; color:var(--text) }
+.ring b { font-size:15px; line-height:1 }
+.warning { display:flex; gap:6px; align-items:center; justify-content:space-between; border:1px solid var(--edge-strong); background:var(--s1); color:var(--kraft); border-radius:7px; padding:6px; font-size:10px }
+.warning .btn { background:var(--kraft); color:var(--ink); border:0; min-height:23px; padding:2px 6px }
+.chart { flex:1; display:flex; flex-direction:column; gap:9px; padding:10px; border:1px solid var(--edge-strong); background:var(--s1); border-radius:8px }
+.chart-head { display:flex; justify-content:space-between; gap:4px; align-items:center }
+.chart-head small { text-align:right; font-size:9px }
+.chart-body { flex:1; min-height:176px; display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:5px; background:repeating-linear-gradient(to top,transparent 0 38px,var(--edge-strong) 39px 40px) }
+.chart-col { min-width:0; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:3px; padding-top:18px; font-size:9px; color:var(--muted) }
+.chart-col i { width:72%; min-height:2px; background:var(--s3); border-radius:3px 3px 0 0 }
+.chart-col i.hot { background:var(--ember); box-shadow:0 0 12px var(--ember-halo) }
+.actions { display:flex; gap:6px; flex-wrap:wrap }
+.actions :is(.primary,.cream) { flex:1 }
+dialog { color:var(--text); padding:0; width:min(780px,calc(100% - 48px)); max-height:calc(100% - 44px); border-radius:var(--radius); overflow:auto }
+.modal-body { padding:17px 22px 20px; display:grid; gap:12px }
+.modal-top { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:8px }
+.modal-top button { justify-self:end }
+.steps { display:flex; gap:4px }
+.steps i { width:14px; height:3px; border-radius:4px; background:var(--edge-strong) }
+.steps i.on { background:var(--ember-light); box-shadow:0 0 9px var(--ember-halo) }
+.circle { border-radius:50%; width:32px; padding:0 }
+.import-intro { text-align:center; display:grid; gap:7px }
+.import-intro h2 { font-size:46px }
+.import-intro p,.extract-heading p { font-size:12px; color:var(--muted) }
+.film { display:grid; gap:3px; grid-template-columns:repeat(5,minmax(0,1fr)); background:var(--ink); padding:11px 1px; position:relative; overflow:hidden }
+.film:before,.film:after { content:""; position:absolute; inset:2px 0 auto; height:5px; background:radial-gradient(circle,var(--s3) 1.4px,transparent 2px) left center/15px 5px repeat-x }
+.film:after { inset:auto 0 2px }
+.import-link { display:flex; align-items:center; gap:9px; border:1px solid var(--red); border-radius:8px; padding:7px 8px; background:var(--yt-surface); box-shadow:0 0 17px var(--yt-glow),inset 0 0 8px var(--yt-soft) }
+.import-link input { border:0; background:transparent; font-size:13px }
+.paste { background:var(--text); color:var(--ink); border:0 }
+.center { text-align:center }
+.divider { display:flex; align-items:center; gap:12px; font-size:10px; color:var(--muted) }
+.divider:before,.divider:after { content:""; height:1px; background:var(--edge-strong); flex:1 }
+.dropzone { display:flex; gap:12px; align-items:center; border:1px dashed var(--edge-strong); border-radius:8px; padding:10px; background:var(--s1) }
+.dropzone strong { display:block; margin-bottom:4px }
+.dropzone .btn { margin-left:auto }
+.link-button { padding:0; background:none; border:0; color:var(--ember-light); text-decoration:underline }
+.extract-heading { display:flex; justify-content:space-between; align-items:end; gap:12px }
+.extract-heading h2 { font-size:38px; margin-bottom:5px }
+.counter { font-size:51px; font-weight:900; line-height:.9; font-variant-numeric:tabular-nums; white-space:nowrap }
+.counter small { font-size:21px }
+.extract-film { grid-template-columns:repeat(14,minmax(0,1fr)); filter:grayscale(1) }
+.progress { height:4px; overflow:hidden; border-radius:4px; background:var(--s3) }
+.progress div { width:100%; height:100%; transform:scaleX(0); transform-origin:left; background:var(--ember-light) }
+.clip-wall { display:grid; grid-template-columns:repeat(13,minmax(0,1fr)); gap:4px; padding:6px 0 }
+.clip-wall span { aspect-ratio:1.8; background-size:auto 125%; background-color:var(--s2); border-radius:3px; opacity:.17; filter:grayscale(1) }
+.clip-wall span.complete { opacity:1; filter:none }
+.extract-footer { display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:32px }
+.extract-footer .chip { max-width:49%; overflow-wrap:anywhere; white-space:normal }
+#mini { position:fixed; bottom:18px; right:18px; z-index:4 }
+.editor { display:grid; grid-template-columns:minmax(270px,30%) minmax(0,1fr) minmax(172px,18%); gap:var(--gap); align-items:start }
+.editor-panel,.review,.stage { padding:10px; display:grid; gap:10px }
+.editor-panel { max-height:calc(100vh - 69px); overflow:auto }
+.segment { display:flex; gap:4px; border:1px solid var(--edge); background:var(--s1); border-radius:7px; padding:3px }
+.segment .btn { flex:1; background:transparent; border:1px solid transparent; min-height:28px; padding:3px 6px; min-width:0 }
+.segment .selected { background:var(--s3); border-color:var(--edge-strong); color:var(--text) }
+.toolbar { display:flex; align-items:center; gap:5px }
+.toolbar .segment,.toolbar .wide { flex:1 }
+.tray-head { display:flex; justify-content:space-between; align-items:center; gap:5px }
+.tray { display:grid; grid-template-columns:1fr 1fr; gap:6px }
+.tray-card { overflow:hidden; position:relative; border:1px solid var(--edge-strong); border-radius:7px; background:var(--s2); min-width:0 }
+.tray-card img { height:63px }
+.tray-card strong { display:block; padding:3px 5px; font-size:10px }
+.tray-card .chip { position:absolute; top:4px; left:4px }
+.tray-card button { position:absolute; right:4px; top:4px; border:0; background:var(--image-label); border-radius:4px }
+.pool { color:var(--text); display:grid; place-content:center; justify-items:center; gap:6px; background:var(--s1); border-style:dashed; font-size:10px }
+.icon-btn { padding:5px; min-width:30px }
+select { background:var(--s1); border:1px solid var(--edge); border-radius:5px; padding:4px; font-size:10px; color:var(--text); min-width:58px }
+.folder-row { padding:6px; border:1px solid var(--edge); border-radius:6px; display:flex; align-items:center; gap:7px; font-size:11px }
+.folder-row img { width:54px; height:32px; border-radius:4px }
+.folder-row span { min-width:0; overflow-wrap:anywhere }
+.folder-row small { display:block }
+.folder-row .good { margin-left:auto }
+.editor-clips { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px }
+.editor-clips button { aspect-ratio:16/9; border:1px solid var(--edge); border-radius:5px; overflow:hidden; background-color:var(--s2); position:relative; padding:0 }
+.editor-clips button[aria-pressed=true] { border-color:var(--rim-top) }
+.editor-clips span { position:absolute; top:3px; left:3px; font-size:9px; padding:2px 4px; background:var(--image-label); border-radius:3px }
+.preview { position:relative; overflow:hidden; border-radius:7px; aspect-ratio:16/9; background:var(--ink) }
+.preview strong { position:absolute; inset:auto 8px 13%; text-align:center; text-shadow:0 2px 4px var(--shadow-opaque),0 0 15px var(--shadow-opaque); font:400 clamp(19px,2vw,36px) Anton,Impact,sans-serif }
+.preview em { font-style:normal; color:var(--kraft) }
+.transport { display:flex; align-items:center; justify-content:center; gap:6px }
+.transport output { margin-left:auto; font-variant-numeric:tabular-nums; font-size:10px }
+.timeline { border:1px solid var(--edge-strong); background:var(--s1); border-radius:6px; position:relative; padding:8px; display:grid; gap:5px; overflow:hidden }
+.timeline-row { display:flex; gap:3px; overflow:hidden }
+.word { background:var(--s3); border:1px solid var(--edge-strong); padding:3px; border-radius:3px; font-size:9px }
+.timeline .wave { background:var(--s2); height:32px; padding:3px }
+.playhead { position:absolute; left:8%; top:0; bottom:0; border-left:2px solid var(--ember-light); pointer-events:none }
+.playhead:before { content:""; position:absolute; top:0; left:-4px; width:7px; height:6px; background:var(--ember-light) }
+#scrub { width:100%; margin:0; accent-color:var(--ember-light) }
+.review label { display:block; min-width:0; position:relative }
+.review label input { position:absolute; opacity:0 }
+.review label input:focus-visible + span { outline:2px solid var(--text); outline-offset:2px }
+.review label span { display:grid; gap:3px; padding:6px; border:1px solid var(--edge); border-radius:5px; font-size:11px; cursor:pointer }
+.review label input:checked + span { border-color:var(--rim-top); background:var(--s3) }
+.review img { aspect-ratio:16/9; border-radius:3px }
+.review small { font-size:9px }
+.toast { position:fixed; right:18px; bottom:61px; z-index:8; padding:9px 13px; background:var(--s3); border:1px solid var(--edge-strong); border-radius:7px; box-shadow:0 6px 22px var(--shadow-tint) }
+.splash { position:fixed; inset:0; display:grid; place-items:center; background:linear-gradient(rgba(6,6,8,.38),rgba(6,6,8,.38)),radial-gradient(120% 90% at 15% 0%,#3a2a6b 0%,transparent 55%),radial-gradient(110% 80% at 100% 100%,#c2410c 0%,transparent 55%),radial-gradient(90% 70% at 85% 10%,#0e7490 0%,transparent 60%),linear-gradient(160deg,#120d1f,#1a0f14 60%,#0b0b10); z-index:9; pointer-events:none; animation:leave 1.2s linear both }
+@keyframes leave { 0%,78% { opacity:1 } 100% { opacity:0 } }
+.details-list { display:grid; gap:7px }
+.details-list a { color:var(--text) }
+.clip-frame { background-size:cover; background-position:center }
+.snapshot { margin-left:auto; display:flex; align-items:center; gap:10px; font-size:11px }
+
+/* Home */
+.launch { grid-template-columns:minmax(0,18fr) minmax(0,50fr) minmax(0,32fr); min-height:170px }
+.intro { padding:18px }
+.drop .wave { opacity:.82; mask-image:linear-gradient(90deg,transparent,var(--shadow-opaque) 35%,var(--shadow-opaque) 65%,transparent) }
+.drop .upload-circle { background:var(--s3); color:var(--text) }
+.project { display:flex; flex-direction:column; justify-content:center; border-radius:8px; padding:3px }
+.project::after { display:none }
+.project-art { position:relative; flex:1; min-height:30px; width:100%; overflow:hidden; border-radius:5px }
+.project span { left:3px; right:auto; top:3px; padding:2px 3px; background:var(--image-label); border-radius:3px; font-size:9px; font-weight:700 }
+.project b { position:static; padding:2px 2px 0; line-height:1.15; white-space:normal; overflow-wrap:anywhere }
+.dashboard {
+  grid-template-columns:minmax(0,2.4fr) repeat(3,minmax(0,1fr)) minmax(0,1.3fr);
+  grid-template-rows:repeat(2,minmax(300px,calc((100vh - var(--bar) - 256px) / 2)));
+  align-items:stretch;
+}
+.discovery { grid-area:1 / 1 / 3 / 2; grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1fr) auto; gap:16px; align-items:stretch }
+.discovery-hero { min-height:0 }
+.hero-frames { gap:0 }
+.hero-frames span { background-size:auto 100%; background-repeat:no-repeat }
+#breaking { position:absolute; top:8px; left:8px; color:var(--text); background:var(--s3); border-color:var(--edge-strong) }
+.discovery-network { display:flex; align-items:center; gap:7px }
+.discovery-copy { gap:10px; padding:2px 4px 5px }
+.discovery-copy h2 { font-size:34px }
+.discovery-copy p { font-size:13px }
+.link-form input,.link-form .btn { height:44px; font-size:12px }
+.feature { height:auto; padding:10px; gap:8px }
+.feature h3 { margin-top:auto; overflow-wrap:normal }
+.plan { grid-area:1 / 2 }
+.channel { grid-area:2 / 2 }
+.thumbnails { grid-area:1 / 3 }
+.claude-card { grid-area:2 / 3 }
+.autopilot { grid-area:1 / 4 }
+.vault { grid-area:2 / 4 }
+.calendar { grid-template-columns:repeat(7,minmax(0,1fr)); grid-template-rows:repeat(4,minmax(0,1fr)); gap:3px }
+.calendar-tile { position:relative; overflow:hidden; border-radius:3px }
+.calendar-tile img { width:100%; height:100%; object-fit:contain; background:var(--s1) }
+.calendar-tile time { position:absolute; top:2px; left:2px; padding:0 1px; border-radius:2px; background:var(--image-label); font-size:9px; line-height:1.2 }
+.autopilot { gap:10px }
+.autopilot .mosaic { grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:none; align-content:start; gap:5px }
+.autopilot .mosaic img { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:6px }
+.video-thumb,.review img { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover }
+.thumb-show { display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:8px; padding:0; background:none }
+.thumb-show .video-thumb { width:100%; height:auto; max-width:none; object-fit:cover }
+.video-meta { display:flex; align-items:center; gap:7px; padding:3px 2px }
+.thumb-show .video-meta img { width:20px; height:20px; border-radius:50%; object-fit:cover; flex:none }
+.video-meta > div { display:grid; gap:2px; min-width:0 }
+.video-meta strong { font-size:13px; font-weight:700; line-height:1.15; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden }
+.video-meta small { font-size:11px }
+.calendar,.autopilot .mosaic { filter:saturate(.85) brightness(.92) }
+.thumb-show .btn { margin:0; width:100%; height:36px; border-radius:999px; white-space:nowrap }
+.channel-art .overlay { bottom:52px }
+.channel-art .overlay strong { font-size:30px; font-weight:900; overflow-wrap:anywhere }
+.channel-art .overlay small { font-size:12px }
+.social { position:absolute; z-index:1; inset:auto 0 0; height:44px; align-items:center; gap:6px; padding:0 8px; background:var(--s1) }
+.social button { width:28px; height:28px }
+.claude-card { padding-top:12px }
+.claude { align-content:start; gap:9px }
+.claude p { padding:7px }
+.claude-results { display:grid; justify-content:center; grid-template-columns:repeat(3,minmax(0,72px)); gap:4px }
+.claude-results figure { margin:0; min-width:0; font-size:11px; text-align:center }
+.claude-results figure div { position:relative; height:110px }
+.claude-results img { border-radius:8px }
+.claude-results figure b { position:absolute; top:3px; right:3px; display:grid; place-items:center; width:18px; height:18px; border-radius:50%; background:var(--green); color:var(--ink) }
+.claude-results figcaption { padding-top:4px }
+.vault-prompt { white-space:normal }
+#vault-art { flex:0 0 auto; overflow:visible; background:none }
+#vault-art::after { display:none }
+#vault-art img { position:static; height:auto; aspect-ratio:16/9; border-radius:7px }
+#vault-art .overlay { position:static; padding:7px 0 0; overflow-wrap:anywhere }
+.stats { grid-area:1 / 5 / 3 / 6; min-height:0 }
+.deadline { flex-wrap:wrap; align-items:baseline; gap:4px 8px }
+.deadline small { max-width:none }
+.meter {
+  border:1px solid var(--edge); border-radius:12px; padding:10px 0; min-width:0;
+  text-transform:uppercase; font-weight:700;
+}
+.ring { position:relative; width:56px; height:56px; border:3px solid var(--edge-strong) }
+.ring::before { content:""; position:absolute; top:-3px; left:50%; translate:-50%; width:5px; height:5px; border-radius:50%; background:var(--ember-light) }
+.chart { border-radius:var(--radius); min-height:0 }
+.warning { font-size:11px }
+.chart-head { flex-wrap:wrap }
+.chart-body { min-height:120px; grid-auto-flow:column; grid-auto-columns:6px; gap:4px; overflow-x:auto; scrollbar-width:thin }
+.chart-col { position:relative; min-height:0; padding-top:18px }
+.chart-col i { width:6px; flex:none; background:rgba(255,255,255,.22) }
+.chart-col b { position:absolute; top:2px; left:0; font-size:9px; white-space:nowrap }
+.chart-col i.hot { background:var(--ember) }
+.stats > .actions { margin-top:auto }
+
+/* Editor */
+.editor {
+  height:calc(100vh - var(--bar)); padding-top:12px; padding-bottom:12px;
+  grid-template-columns:minmax(0,29fr) minmax(0,52fr) minmax(0,19fr); align-items:stretch;
+}
+.editor-panel,.stage,.review { min-height:0; gap:12px }
+.editor-panel { max-height:none; align-content:start }
+.stage,.review { display:flex; flex-direction:column }
+.stage .preview { flex:1; min-height:0; aspect-ratio:auto }
+.preview img { object-fit:cover }
+.stage .transport,.stage .timeline { flex:none }
+.timeline { padding:8px; overflow:visible }
+.timeline-row { min-width:0 }
+#words { overflow:auto; scrollbar-width:thin; padding-left:8px }
+.word { flex:none; display:grid; place-items:center; height:24px; padding:0 5px; font-size:11px }
+#timeline-frames .clip-frame { flex:1; min-width:0; height:52px }
+.timeline .wave { height:64px }
+.timeline .wave i { background:var(--ember); opacity:.75 }
+.playhead { top:8px; bottom:27px }
+#scrub { display:block; height:16px; position:relative }
+.editor-panel .toolbar,.tray-card strong,.review label span { overflow-wrap:anywhere }
+.tray { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px }
+.review { overflow:auto }
+.review label { flex:none }
+.review > .btn { min-height:44px; margin-top:auto; flex:none }
+.review-stats { flex:0 0 auto; display:grid; margin:0; font-size:12px; color:var(--muted) }
+.review-stats div { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:7px 0 }
+.review-stats div + div { border-top:1px solid var(--edge) }
+.review-stats dd { margin:0; color:var(--text); font-size:13px; font-weight:700 }
+.clip-frame { background-size:600% auto; background-repeat:no-repeat }
+.editor-clips { container-type:inline-size }
+@container (width > 305px) {
+  .editor-clips .clip-frame { background-size:240% auto }
+}
+.calendar .clip-frame { background-size:auto 175% }
+
+/* Import and extraction */
+dialog:modal { position:fixed; inset:0; margin:auto; max-height:calc(100vh - 48px) }
+.modal-top { grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) }
+#import-dialog { width:min(804px,calc(100% - 24px)); padding:12px; border:0; background:none; box-shadow:none }
+#import-dialog .modal-body { border-radius:var(--radius) }
+.import-close { position:absolute; top:0; right:0; z-index:1; width:40px; height:40px; border:1px solid var(--edge-strong); background:var(--s3); font-size:22px }
+.film .clip-frame { height:72px; background-size:cover }
+#import-film .city-crop { background-size:240% auto }
+.import-link .yt { color:#FF3355 }
+.import-link { min-height:60px; box-shadow:0 0 0 1px var(--red),0 0 26px var(--yt-glow) }
+.import-link input { font-size:17px; font-weight:700 }
+.import-link input:focus-visible { outline:0 }
+.import-link:has(input:focus-visible) { outline:2px solid var(--text); outline-offset:2px }
+.import-link input::placeholder { color:var(--text); opacity:1 }
+.paste { height:40px; border-radius:10px }
+.dropzone .upload-circle {
+  width:56px; height:56px; flex:none; border-radius:14px; color:var(--text);
+}
+.link-button { color:var(--text); font-weight:700; text-decoration:none }
+.link-button svg { width:13px; height:13px; margin-right:4px }
+[data-action=minimize] { height:34px; background:var(--gl-tile); border:1px solid var(--gl-rim); border-radius:999px }
+.btn.import-close:focus-visible,#minimize-extraction:focus-visible,#ready-actions [data-action=open-editor]:focus-visible { outline:2px solid var(--text); outline-offset:2px }
+.extract-film { grid-template-columns:repeat(30,minmax(0,1fr)); padding:0; gap:1px }
+.extract-film::before,.extract-film::after { display:none }
+.extract-film .clip-frame { height:33px; background-size:auto 130% }
+.extract-footer { flex-wrap:wrap }
+#ready-actions .btn { height:40px }
+
+/* Startup */
+.splash-frame {
+  display:grid; place-content:center; justify-items:center; gap:8px;
+  width:min(520px,calc(100vw - 48px)); min-height:240px; border-radius:var(--radius);
+  background:var(--gl-card); box-shadow:var(--gl-shadow);
+  -webkit-backdrop-filter:var(--gl-blur); backdrop-filter:var(--gl-blur);
+}
+.splash-frame strong { font:700 clamp(72px,14vw,128px)/.92 var(--display); letter-spacing:-.05em }
+.splash-frame .eyebrow { font-size:20px }
+
+@media(max-width:1350px) {
+  .screen { padding-right:12px }
+  .stats { padding:8px }
+  .meter { padding-block:8px }
+  .profile { flex-wrap:wrap }
+  .profile button { margin-left:0 }
+}
+@media(max-width:1100px) {
+  .dashboard { grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:auto; grid-auto-rows:minmax(220px,auto) }
+  .dashboard > * { grid-area:auto }
+  .discovery { grid-column:span 2; min-height:360px }
+  .stats { grid-column:1/-1 }
+  .launch { grid-template-columns:minmax(0,1fr) minmax(0,2fr) }
+  .projects { grid-column:1/-1 }
+  .editor { height:auto; grid-template-columns:minmax(0,2fr) minmax(0,3fr) }
+  .editor-panel { max-height:calc(100vh - 60px) }
+  .review { grid-column:2 }
+}
+@media(max-width:690px) {
+  .dashboard,.editor { grid-template-columns:minmax(0,1fr) }
+  .dashboard > *,.review { grid-column:auto }
+  .stage .preview { flex:auto; aspect-ratio:16/9 }
+  .welcome,.dropzone,.extract-heading { flex-wrap:wrap }
+  .snapshot { margin-left:0 }
+  .launch { grid-template-columns:minmax(0,1fr) }
+  .drop { min-height:160px }
+  .projects { grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:none }
+  .dropzone .btn { margin-left:0 }
+  .import-intro h2 { font-size:clamp(24px,6vw,46px) }
+  .discovery-copy h2 { font-size:clamp(24px,6vw,34px) }
+  .editor .toolbar { flex-wrap:wrap }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:0s !important; transition-duration:0s !important; transition-delay:0s !important; scroll-behavior:auto !important }
+}
+
+/* Shared finish */
+html,body { overflow-x:clip; font-variant-numeric:tabular-nums }
+h1,h2,h3 { overflow-wrap:anywhere }
+.eyebrow.accent { color:var(--muted) }
+.welcome > .eyebrow { color:var(--muted) }
+.preview em { color:var(--ember-light) }
+dialog:focus { outline:none }
+.chip { background:var(--glass-chip); color:var(--muted); border-color:var(--edge-strong) }
+.plan-badge { color:var(--green); border-color:var(--ok-edge); background:var(--ok-surface) }
+.project,.project-art,.discovery-hero,.feature-art,.video-thumb,.preview,.tray-card,.editor-clips button,.review label span,#vault-art img {
+  border-radius:var(--tile-radius);
+}
+.project-art,.discovery-hero,.feature-art,.video-thumb,.preview,.tray-card img,.editor-clips button,.review img,#vault-art img {
+  outline:1px solid var(--image-edge); outline-offset:-1px;
+}
+
+.ring { border-top-color:var(--ember) }
+.playhead,.progress div,.steps i.on { border-color:var(--ember); accent-color:var(--ember) }
+.playhead::before,.progress div,.steps i.on { background:var(--ember) }
+#scrub { accent-color:var(--ember) }
+
+dialog,#import-dialog .modal-body {
+  background:var(--gl-card); border:0;
+  -webkit-backdrop-filter:var(--gl-blur); backdrop-filter:var(--gl-blur);
+  box-shadow:var(--gl-shadow);
+}
+#import-dialog { -webkit-backdrop-filter:none; backdrop-filter:none }
+dialog::backdrop { background:var(--dialog-veil); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px) }
+
+
+/* Floating studio navigation */
+.sidebar {
+  --side-padding:12px;
+  --side-end:19px;
+  --side-icon-size:38px;
+  --side-avatar-size:40px;
+  --side-center:calc(var(--sidebar-closed) / 2 - 4px);
+  --side-open-progress:0;
+  position:fixed; inset:calc(var(--bar) + 12px) auto var(--sidebar-margin) var(--sidebar-margin);
+  z-index:6; width:var(--sidebar-closed); pointer-events:none;
+  transform:perspective(1100px); transform-origin:50% 50%; will-change:transform;
+}
+@media (prefers-reduced-motion:reduce) { .sidebar { transform:none!important } }
+.sidebar.is-open { width:var(--sidebar-open) }
+.sidebar-glass,.sidebar-rim {
+  position:absolute; inset:0; width:100%; height:100%; pointer-events:none;
+}
+.sidebar-glass,.sidebar-content { clip-path:url(#sidebar-clip) }
+.sidebar-glass {
+  background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04)),rgba(14,14,16,.46);
+  -webkit-backdrop-filter:blur(22px) saturate(1.4);
+  backdrop-filter:blur(22px) saturate(1.4);
+  border-radius:22px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 0 24px rgba(255,255,255,.08);
+}
+.sidebar-glass::before,.sidebar-glass::after { content:""; position:absolute; inset:0 }
+.sidebar-glass::before {
+  inset:0; width:auto;
+  background:linear-gradient(115deg,transparent 22%,rgba(255,255,255,.07) 40%,rgba(255,255,255,.02) 52%,transparent 66%) no-repeat;
+  background-size:220% 100%;
+  background-position:calc(100% - var(--side-sweep, 0) * 60%) 0;
+}
+.sidebar-glass::after {
+  background:radial-gradient(circle 104px at var(--side-pointer-x, 50%) var(--side-pointer-y, 50%), rgba(255,255,255,.11), transparent);
+  opacity:var(--side-pointer-light, 0); transition:opacity .25s;
+}
+.sidebar-rim-shadow { position:absolute; inset:0; filter:drop-shadow(0 20px 40px rgba(0,0,0,.45)) drop-shadow(0 0 8px rgba(255,220,200,.12)) }
+.sidebar-rim { overflow:visible }
+.sidebar-content { position:absolute; inset:0; pointer-events:auto }
+.sidebar-layout {
+  position:relative; height:100%; display:flex; flex-direction:column;
+  width:var(--sidebar-open); padding:10px var(--side-end) 16px var(--side-padding);
+}
+.side-nav { min-height:0; display:flex; flex-direction:column; overflow:auto; scrollbar-width:none; margin-bottom:10px }
+.side-head,.side-profile { display:flex; align-items:center; border-bottom:1px solid var(--edge-strong); flex:none }
+.side-head { height:44px; padding-bottom:8px }
+.side-toggle-wrap {
+  position:absolute; z-index:1; top:10px;
+  left:calc(var(--side-center) - var(--side-icon-size) / 2 +
+    (var(--sidebar-open) - var(--side-end) - var(--side-center) - var(--side-icon-size) / 2) * var(--side-open-progress));
+  pointer-events:auto;
+}
+.side-toggle-tooltip {
+  position:absolute; left:calc(100% + 10px); top:50%;
+  padding:5px 8px; border-radius:7px; border:1px solid var(--edge-strong);
+  background:rgba(14,14,16,.94); box-shadow:var(--top-highlight);
+  color:var(--text); font-size:11px;
+  white-space:nowrap; pointer-events:none; opacity:0; visibility:hidden;
+  transform:translate(-4px,-50%);
+  transition:opacity 80ms ease,transform 80ms ease,visibility 0s linear 80ms;
+}
+.side-toggle-wrap.show-tooltip .side-toggle-tooltip {
+  opacity:1; visibility:visible; transform:translate(0,-50%); transition-delay:0s;
+}
+.side-brand,.side-profile { position:relative }
+.side-brand { display:flex; align-items:center; font-weight:900; letter-spacing:.45em }
+.side-brand .side-icon { opacity:var(--side-open-progress); margin-left:calc(var(--side-center) - var(--side-icon-size) / 2 - var(--side-padding)) }
+.side-brand i { width:9px; height:9px; border-radius:1px; background:var(--ember) }
+.side-brand .side-label,.side-profile .side-label {
+  position:absolute; left:calc(var(--sidebar-closed) - var(--side-padding) + 2px);
+}
+.side-profile { height:67px }
+.side-avatar {
+  width:var(--side-avatar-size); height:var(--side-avatar-size); flex:none; position:relative;
+  margin-left:calc(var(--side-center) - var(--side-avatar-size) / 2 - var(--side-padding));
+}
+.side-avatar img { border-radius:50%; border:1px solid var(--kraft); object-position:50% 38% }
+.side-avatar i { position:absolute; width:11px; height:11px; right:0; bottom:0; border:2px solid var(--s2); background:var(--green); border-radius:50% }
+.side-profile strong { font-size:16px }
+.side-profile b { background:var(--text); color:var(--ink); border-radius:5px; padding:2px 5px; font-size:9px; margin-left:4px; letter-spacing:.08em }
+.side-profile small { display:block; margin-top:2px; white-space:nowrap }
+.side-menu {
+  flex:none; overflow:hidden; height:calc(16px * var(--side-open-progress));
+  margin:11px 5px calc(6px * var(--side-open-progress));
+  clip-path:inset(0 calc(100% * (1 - var(--side-open-progress))) 0 0);
+}
+.side-label { white-space:nowrap; pointer-events:none }
+.side-icon {
+  width:var(--side-icon-size); height:var(--side-icon-size); border-radius:9px; flex:none; display:grid; place-items:center;
+  background:var(--glass-chip); border:1px solid var(--edge); box-shadow:var(--top-highlight); color:rgba(255,255,255,.88);
+}
+.side-icon svg { width:20px; height:20px; stroke-width:2 }
+#sidebar-toggle:hover { background:var(--glass-hover) }
+.side-row {
+  position:relative; flex:none; display:flex; align-items:center;
+  min-height:34px; border-radius:10px; border:1px solid transparent;
+  padding:2px 11px 2px calc(var(--side-center) - var(--side-icon-size) / 2 - var(--side-padding) - 1px);
+  text-align:left; background:transparent; color:rgba(255,255,255,.8); font-weight:500; font-size:13px;
+}
+.side-row > .side-label:not(.idea-chevron) { position:absolute; left:calc(var(--sidebar-closed) - var(--side-padding) - 16px); clip-path:inset(0 calc(100% * (1 - var(--side-open-progress, 0))) 0 0); opacity:min(1, calc(var(--side-open-progress, 0) * 4)) }
+.side-row:is([data-highlighted],[aria-current],:has(+ .idea-tree button[aria-current])) { color:var(--text) }
+.side-row:is([data-highlighted],[aria-current],:has(+ .idea-tree button[aria-current])) .side-icon { background:var(--text); color:var(--ink) }
+.idea-chevron { margin-left:auto }
+.idea-chevron svg { width:13px; height:13px }
+[aria-expanded=false] .idea-chevron svg { rotate:-90deg }
+.idea-tree {
+  display:grid; grid-template-rows:0fr; position:relative; margin:0 8px 0 19px; flex:none;
+  transition:grid-template-rows 160ms var(--sidebar-ease),margin 160ms var(--sidebar-ease);
+}
+.idea-tree.is-visible { grid-template-rows:1fr; margin-block:1px 4px }
+.idea-tree-rows { position:relative; display:grid; min-height:0; overflow:hidden; gap:2px; padding-left:14px }
+.idea-tree-rows::before {
+  content:""; position:absolute; left:0; top:0; bottom:13px; width:1px;
+  background:var(--edge-strong); opacity:0; transition:opacity 100ms ease;
+}
+.idea-tree.is-visible .idea-tree-rows::before { opacity:1 }
+.idea-tree button {
+  position:relative; min-height:25px; padding:3px 9px; border:1px solid transparent;
+  border-radius:8px; color:rgba(255,255,255,.62); background:transparent; text-align:left; white-space:nowrap; font-size:12px;
+  clip-path:inset(0 100% 0 -15px); transform:translateY(-4px);
+  transition:clip-path 100ms var(--sidebar-ease),transform 100ms var(--sidebar-ease);
+}
+.idea-tree.is-visible button { clip-path:inset(0 0 0 -15px); transform:translateY(0); transition-delay:var(--tree-delay, 0ms) }
+.idea-tree button:nth-of-type(2) { --tree-delay:30ms }
+.idea-tree button:nth-of-type(3) { --tree-delay:60ms }
+.idea-tree button::before {
+  content:""; position:absolute; top:50%; left:-15px; width:10px; height:6px;
+  translate:0 -100%; border:solid var(--edge-strong); border-width:0 0 1px 1px; border-radius:0 0 0 5px;
+}
+.idea-tree button:is([aria-current],[data-highlighted]) { color:var(--text) }
+.side-highlight,.side-sub-highlight,.side-tree-dot {
+  position:absolute; top:0; left:0; pointer-events:none; visibility:hidden;
+  transition:transform 300ms var(--sidebar-glide),height 300ms var(--sidebar-glide),width 300ms var(--sidebar-glide);
+}
+.side-highlight.is-visible,.side-sub-highlight.is-visible,.side-tree-dot.is-visible { visibility:visible }
+.side-highlight,.side-sub-highlight {
+  border:1px solid rgba(255,255,255,.35); border-radius:12px; background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04)); box-shadow:inset 0 1px 0 rgba(255,255,255,.35);
+  background:var(--gl-rim); box-shadow:var(--top-highlight);
+}
+.side-sub-highlight { background:var(--gl-tile) }
+.side-tree-dot { width:5px; height:5px; border-radius:50%; background:var(--text); box-shadow:0 0 8px var(--rim-top) }
+.side-footer { margin-top:auto; padding-top:14px; border-top:1px solid var(--gl-rim); flex:none }
+.side-footer .side-row { width:100% }
+.side-promo {
+  --promo-height:72px;
+  --promo-image-width:calc(var(--sidebar-closed) - var(--side-padding) - 10px);
+  position:relative; display:block; height:var(--promo-height);
+  width:calc(var(--promo-image-width) + (var(--sidebar-open) - var(--side-padding) - var(--side-end) - var(--promo-image-width)) * var(--side-open-progress));
+  padding:0; margin:0 0 7px;
+  border:1px solid var(--edge-strong); border-radius:12px; overflow:hidden; text-align:left;
+  background:var(--s2); box-shadow:var(--top-highlight);
+}
+.side-promo:hover { border-color:var(--rim-top) }
+.promo-copy {
+  position:absolute; inset:0 calc(var(--promo-image-width) - 2px) 0 auto; display:grid; align-content:center; gap:3px;
+  width:calc(var(--sidebar-open) - var(--side-padding) - var(--side-end) - var(--promo-image-width)); padding:8px;
+  background:var(--text); color:var(--ink); font-size:10px;
+}
+.promo-copy small { color:var(--faint); font-size:8px; font-weight:900; letter-spacing:.1em; text-transform:uppercase }
+.promo-copy strong { font:600 24px/1.05 var(--display); letter-spacing:-.02em }
+.promo-image {
+  position:absolute; inset:0 0 0 auto; width:calc(var(--promo-image-width) - 2px);
+  background:linear-gradient(0deg,var(--image-shade),transparent 55%),linear-gradient(160deg,#c2410c,#3a2a6b);
+}
+.promo-image .side-label {
+  position:absolute; bottom:7px; right:7px; color:var(--text); font-size:8px;
+  text-transform:uppercase; font-weight:900; letter-spacing:.12em;
+  clip-path:inset(0 calc(100% * (1 - var(--side-open-progress))) 0 0);
+}
+@media(max-height:980px) {
+  .sidebar { --side-icon-size:33px }
+  .sidebar .side-row { min-height:34px }
+}
+@media(max-width:690px) {
+  :root { --sidebar-margin:8px; --sidebar-closed:58px; --content-inset:74px; --sidebar-open:min(264px,calc(100vw - 16px)) }
+  .sidebar { --side-padding:6px; --side-avatar-size:33px }
+}
+@media(prefers-reduced-motion:reduce) {
+  .sidebar *, .sidebar *::before, .sidebar *::after { transition:none }
+}
+
+/* glass */
+.scenery { position:fixed; inset:0; z-index:0; pointer-events:none }
+.scenery-layer,.scenery-tint { position:absolute; inset:0 }
+.scenery-layer { background-position:center; background-size:cover }
+#scenery-base { background-image:radial-gradient(120% 90% at 15% 0%,#3a2a6b 0%,transparent 55%),radial-gradient(110% 80% at 100% 100%,#c2410c 0%,transparent 55%),radial-gradient(90% 70% at 85% 10%,#0e7490 0%,transparent 60%),linear-gradient(160deg,#120d1f,#1a0f14 60%,#0b0b10) }
+.scenery-credit { position:fixed; right:18px; bottom:10px; z-index:1; font-size:11px; color:rgba(255,255,255,.72); text-shadow:0 1px 6px rgba(0,0,0,.45); pointer-events:none }
+#scenery-fade { opacity:0; transition:opacity 1.6s linear }
+#scenery-fade.is-visible { opacity:1 }
+.scenery-tint { background:linear-gradient(rgba(0,0,0,.34),transparent 32%),var(--gl-tint) }
+.photo-dimmed .scenery-tint { background-color:rgba(6,6,8,.64) }
+main { position:relative }
+.bar {
+  position:sticky; top:0; z-index:3; height:var(--bar); padding:0 18px 0 var(--content-inset);
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px;
+  background:rgba(14,14,16,.2);
+}
+.bar-brand,.bar-tools { display:flex; align-items:center; gap:10px; white-space:nowrap }
+.bar-brand { justify-self:start }
+.bar-brand .wordmark { font:700 24px/1 var(--display); letter-spacing:-.04em }
+.wordmark::after { content:""; display:inline-block; width:.16em; height:.16em; margin-left:.1em; background:var(--ember) }
+.bar-brand > span { padding-left:10px; border-left:1px solid rgba(255,255,255,.28) }
+.bar-tools { grid-column:3; justify-self:end; gap:8px }
+.bar-icon {
+  display:grid; place-items:center; width:32px; height:32px; padding:0; border-radius:50%;
+  background:var(--gl-pill); border:1px solid rgba(255,255,255,.28); font-weight:700;
+}
+.bar-icon svg { width:15px; height:15px }
+.bar-icon:is(:hover,[aria-pressed=true]) { background:var(--gl-sel); color:var(--ink) }
+.top-nav {
+  --nav-item:72px;
+  position:absolute; left:50%; transform:translateX(-50%);
+  display:grid; grid-template-columns:repeat(3,var(--nav-item)); padding:3px;
+  border-radius:999px; background:var(--gl-pill); box-shadow:inset 0 0 0 1px var(--gl-rim);
+  -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px);
+}
+.top-nav::before {
+  content:""; position:absolute; inset:3px auto 3px 3px; width:var(--nav-item);
+  border-radius:inherit; background:var(--gl-sel); transform:translateX(calc(var(--nav-index, 0) * 100%));
+  transition:transform 320ms cubic-bezier(.22,1,.36,1);
+}
+.top-nav[data-active=research] { --nav-index:1 }
+.top-nav[data-active=knowledge] { --nav-index:2 }
+.top-nav button {
+  position:relative; min-height:31px; border:0; border-radius:999px; padding:0 6px;
+  color:#d0cdca; background:transparent; font-weight:600;
+}
+.top-nav button:hover { color:var(--text) }
+.top-nav :is([aria-current=page],[aria-expanded=true]) { color:var(--ink) }
+.top-nav:has([aria-expanded=true]) [aria-current=page] { color:#d0cdca }
+
+.intro,.drop,.projects,.discovery,.stats,.plan,.editor-panel,.stage,.review {
+  -webkit-backdrop-filter:var(--gl-blur); backdrop-filter:var(--gl-blur);
+}
+.intro { gap:8px }
+.intro h1 { font-size:46px; line-height:.9 }
+.discovery-copy h2 { font-size:clamp(30px,3.25vw,46px); line-height:1.02 }
+.discovery,.feature,.stats,.editor-panel,.stage,.review { padding:18px }
+.discovery-copy { padding:0 }
+.projects { padding:10px; gap:8px }
+.project { background:var(--gl-tile); box-shadow:inset 0 0 0 1px var(--gl-rim); border:0; padding:4px }
+.project-art,.claude-results img,.autopilot .mosaic img,.review img { border-radius:var(--tile-radius) }
+.project-art,.claude-results img,.autopilot .mosaic img,.review img { outline:1px solid var(--image-edge); outline-offset:-1px }
+.project-art { border-radius:10px }
+.project span,.calendar-tile time,.editor-clips span { border-radius:999px }
+.project span,.chip,.feature .chip { font-size:11px; font-weight:600 }
+.chip { border-radius:999px }
+.project span { font-size:10px }
+.live-dot { width:6px; height:6px; border-radius:50%; background:var(--ember) }
+.channel-art .overlay strong,.number { font-family:var(--display); font-weight:600; letter-spacing:-.02em }
+.stats-title { font-size:19px }
+.stats-title small { font:600 11px var(--body-font) }
+.number span { font-weight:600 }
+.meter { text-transform:none; background:var(--gl-tile); border-radius:var(--tile-radius) }
+.ring { background:transparent; border-color:rgba(255,255,255,.12); border-top-color:var(--ember) }
+.chart-body { grid-template-columns:none; grid-auto-columns:minmax(0,1fr); gap:3px }
+.chart-col i { width:100% }
+.chart-col b { z-index:1 }
+.chart,.warning,.timeline,.segment,.folder-row,.dropzone,.import-link { border-radius:var(--tile-radius) }
+.stats .actions { flex-wrap:nowrap }
+.stats .actions .btn { padding-inline:9px; min-width:0 }
+#count { color:var(--ember) }
+#breaking,.drop small { background:var(--gl-card); border-radius:999px }
+.drop small { padding:4px 10px }
+.drop:is(:hover,.drag) { background:rgba(14,14,16,.6); box-shadow:inset 0 0 0 1px var(--rim-top),var(--gl-shadow) }
+input[type=text],input[type=url] { background:var(--gl-tile); border-radius:var(--tile-radius); box-shadow:inset 0 0 0 1px var(--gl-rim); border:0; padding-inline:11px }
+.import-link input { box-shadow:none; background:transparent }
+.import-intro h2 { font-size:clamp(28px,6vw,52px) }
+.extract-heading h2 { font-size:clamp(28px,5vw,44px) }
+.modal-body { padding:18px; gap:14px }
+.editor .stage h2 { font-size:clamp(24px,3vw,44px) }
+.film,.toast { border-radius:var(--tile-radius) }
+.toast { background:rgba(14,14,16,.94) }
+
+.btn,.drop small { border-radius:999px; font-weight:600; font-size:12px }
+.btn:not(.circle,.icon-btn) { min-height:36px }
+.btn:is(.primary,.cream,.paste) {
+  min-height:40px; padding:6px 12px; color:var(--ink); background:var(--gl-sel); border:0;
+}
+.btn:has(.btn-mark) { padding-inline:12px 6px }
+.btn-mark {
+  display:grid; place-items:center; flex:none; width:24px; height:24px;
+  border-radius:50%; color:var(--gl-sel); background:var(--ink); font-size:14px;
+}
+.btn-mark svg { width:14px; height:14px }
+.btn.icon-btn { min-height:32px; min-width:32px }
+.btn.paste { border-radius:999px }
+.btn.ghost,.warning .btn {
+  background:var(--gl-rim); border:0; box-shadow:inset 0 0 0 1px var(--gl-rim); color:var(--text);
+}
+.warning .btn { min-height:24px; padding:2px 8px }
+.segment .btn:not(.circle,.icon-btn) { min-height:28px; font-size:11px }
+.segment .selected { background:var(--gl-sel); color:var(--ink) }
+.review [data-action=export] { background:var(--ember); color:var(--ink) }
+
+.side-profile { height:56px }
+.side-menu { margin-block:7px calc(4px * var(--side-open-progress)) }
+.side-row { padding-block:1px }
+.side-nav { margin-bottom:6px }
+.side-footer { padding-top:8px }
+.side-row[aria-current] .side-icon::after {
+  content:""; position:absolute; left:2px; top:50%; translate:0 -50%;
+  width:4px; height:4px; border-radius:50%; background:var(--ember);
+}
+.side-tree-dot { background:var(--ember); box-shadow:none }
+.side-promo,.promo-copy { background:var(--gl-tile); color:var(--text) }
+.promo-copy small { color:var(--muted); text-transform:none; letter-spacing:0 }
+
+@media(max-width:1350px) {
+  .feature,.stats,.editor-panel,.stage,.review { padding:12px }
+}
+@media(max-width:800px) {
+  .bar { padding-left:12px; padding-right:12px; gap:8px }
+  .bar-brand > span { display:none }
+  .top-nav { --nav-item:60px; position:relative; left:auto; transform:none }
+}
+@media(max-width:450px) {
+  .bar-brand .wordmark { font-size:18px }
+  .top-nav { --nav-item:clamp(42px,12vw,54px) }
+  .top-nav button { font-size:11px; padding-inline:2px }
+  .bar-tools { gap:4px }
+  .bar { gap:4px; padding-inline:8px }
+}
+
+/* Houses */
+.top-nav { --nav-item:90px }
+.house { padding:16px clamp(12px,2vw,30px) 48px 0 }
+.house h1 { font-size:clamp(30px,4.3vw,70px); letter-spacing:-.045em }
+.house h2 { font-size:clamp(22px,2.1vw,32px) }
+.house .panel { -webkit-backdrop-filter:var(--gl-blur); backdrop-filter:var(--gl-blur) }
+.house-hero { display:grid; place-items:center; min-height:clamp(260px,39vh,480px); padding:clamp(18px,4vw,58px); background:linear-gradient(115deg,rgba(20,14,17,.89),rgba(25,15,22,.69)); text-align:center }
+.house-hero.drag,.dropzone.drag { box-shadow:inset 0 0 0 2px var(--ember),var(--gl-shadow) }
+.hero-body { display:grid; justify-items:center; gap:18px; width:min(100%,760px) }
+.hero-form { display:flex; width:min(100%,610px); gap:8px }
+.hero-form input,.import-link input { font-size:15px }
+.hero-form input { min-height:48px; padding-inline:16px }
+.hero-form .btn { min-height:48px }
+.house-section { margin-top:26px }
+.section-head,.house-heading,.channel-head,.house-actions,.principle-meta { display:flex; flex-wrap:wrap; align-items:center; gap:12px }
+.section-head,.house-heading,.channel-head,.principle-meta { justify-content:space-between }
+.section-head { margin-bottom:12px }
+.house-heading { padding:clamp(20px,3vw,48px); min-height:155px }
+.house-heading p { color:var(--muted); margin-top:8px }
+.house-heading p:empty { display:none }
+.filter-pills { display:flex; flex-wrap:wrap; gap:6px }
+.filter-pills .btn[aria-pressed=true] { background:var(--gl-sel); color:var(--ink) }
+.house-filters { margin:16px 0 }
+.house-empty { display:grid; min-height:150px; place-content:center; padding:24px; color:var(--text); text-align:center; font:600 clamp(16px,2vw,23px)/1.25 var(--display) }
+.job-grid,.channel-grid,.clip-grid { display:grid; gap:var(--gap) }
+.job-grid { grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)) }
+.channel-grid { grid-template-columns:repeat(auto-fill,minmax(min(100%,355px),1fr)) }
+.clip-grid { grid-template-columns:repeat(auto-fill,minmax(min(42%,160px),1fr)) }
+.job-card,.channel-card,.principle { padding:16px; text-align:left }
+.job-card { display:grid; grid-template-columns:90px minmax(0,1fr); gap:12px; border:0; align-items:center }
+.job-copy { display:grid; gap:6px }
+.job-art,.video-thumb { aspect-ratio:16/9; overflow:hidden; border-radius:9px; background:var(--gl-tile) }
+.job-copy strong,.channel-name,.clip-name { overflow-wrap:anywhere }
+.clip-card { padding:0; border:0; text-align:left }
+.clip-actions { flex-wrap:wrap }
+.rate-row { display:flex; align-items:center; gap:14px; width:100% }
+.rate-slider { flex:1; -webkit-appearance:none; appearance:none; height:8px; border-radius:99px; cursor:pointer;
+  background:linear-gradient(90deg,#F5822E var(--p,44%),rgba(255,255,255,.14) var(--p,44%)) }
+.rate-slider::-webkit-slider-thumb { -webkit-appearance:none; width:26px; height:26px; border-radius:50%; background:#fff; border:3px solid #F5822E; box-shadow:0 2px 8px rgba(0,0,0,.4) }
+.rate-val { min-width:56px; text-align:right; font:700 20px/1 Switzer,sans-serif; color:#fff }
+.rate-btn { height:40px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.07); color:#fff; font:600 15px/1 Switzer,sans-serif; cursor:pointer }
+.rate-btn:hover { background:rgba(245,130,46,.22); border-color:rgba(245,130,46,.6) }
+.rate-btn[aria-pressed=true] { background:#F5822E; color:#14100D; border-color:#F5822E }
+.btn.act.act-yes, .btn.act.act-no { flex:1; justify-content:center; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); color:#fff }
+.btn.act.act-yes .act-ic { color:#4ADE80 } .btn.act.act-no .act-ic { color:#F87171 }
+.btn.act.act-yes:hover:not(:disabled) { background:rgba(74,222,128,.16); border-color:rgba(74,222,128,.5) }
+.btn.act.act-no:hover:not(:disabled) { background:rgba(248,113,113,.14); border-color:rgba(248,113,113,.45) }
+.shadow-clip { opacity:.55; pointer-events:none }
+.shadow-clip .clip-art { aspect-ratio:9/16; display:grid; place-items:center; background:linear-gradient(110deg,rgba(255,255,255,.04) 30%,rgba(255,255,255,.14) 50%,rgba(255,255,255,.04) 70%); background-size:250% 100%; animation:shadowSweep 1.6s linear infinite }
+.shadow-label { font-size:12px; color:rgba(255,255,255,.75); padding:4px 10px; border-radius:99px; background:rgba(0,0,0,.35); text-align:center; max-width:85% }
+@keyframes shadowSweep { from { background-position:100% 0 } to { background-position:-150% 0 } }
+.clip-art,.clip-player { position:relative; aspect-ratio:9/16; background:#16151a; overflow:hidden }
+.missing-media { height:100%; display:grid; place-content:center; text-align:center; padding:6px; color:var(--muted); font-size:12px }
+.clip-overlay { position:absolute; inset:auto 8px 8px; display:flex; align-items:center; justify-content:space-between; gap:4px }
+.media-chip { background:rgba(12,12,15,.88); color:var(--text) }
+.media-chip.score { color:var(--ember) }
+.clip-copy { display:grid; gap:6px; padding:12px }
+.clip-name { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden }
+.status-dot,.engine-status i,.confidence i { display:inline-block; width:7px; height:7px; flex:none; border-radius:50%; background:var(--muted) }
+.status-dot { margin-right:5px }
+.status-dot.rendered,.confidence.proven i { background:var(--ember) }
+.status-dot.approved,.engine-status[data-online=true] i { background:var(--green) }
+.status-dot.exported,.confidence.research i { background:white }
+.confidence.his-rule i,.confidence.starter i { background:#e2ccab }
+.engine-status { --promo-height:44px; display:flex; align-items:center; gap:8px; cursor:default }
+.engine-status i { margin-left:calc((var(--promo-image-width) - 9px) / 2 * (1 - var(--side-open-progress)) + 9px * var(--side-open-progress)) }
+.engine-status .side-label { white-space:nowrap; font-size:11px; opacity:min(1,calc(var(--side-open-progress) * 4)) }
+.dialog-notice { padding:10px 16px; background:var(--s3); overflow-wrap:anywhere }
+.channel-card { display:grid; align-content:start; gap:15px }
+.channel-head { justify-content:flex-start }
+.channel-head .chip { margin-left:auto }
+.channel-avatar { width:46px; height:46px; display:grid; place-items:center; overflow:hidden; border-radius:50%; background:var(--gl-tile); font:600 22px var(--display) }
+.channel-name { font-size:19px }
+.channel-stats,.video-strip { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px }
+.channel-stats div { display:grid; gap:4px; border-radius:10px; background:var(--gl-tile); padding:9px }
+.video-thumb { position:relative; display:block }
+.video-thumb .chip { position:absolute; bottom:3px; right:3px }
+a.btn { text-decoration:none; color:inherit }
+.principle-list { display:grid; gap:8px }
+.principle { display:grid; gap:7px }
+.principle h2 { font-size:20px }
+.principle .why,.principle-meta,.update-log { color:var(--muted) }
+.principle-meta a { color:var(--text) }
+.confidence { color:var(--text) }
+.week-divider { border-top:1px solid var(--edge-strong); margin-top:8px; padding-top:9px; color:var(--text); font-size:12px }
+.update-log { margin-top:18px; padding:14px; display:grid; gap:5px }
+.refresh i { display:inline-block; font-style:normal }
+.refresh[aria-busy=true] i { animation:spin .9s linear infinite }
+@keyframes spin { to { transform:rotate(360deg) } }
+.form-message { color:#ffc6c6; overflow-wrap:anywhere }
+.form-message.muted { color:var(--muted) }
+#extract-film { grid-template-columns:repeat(12,minmax(0,1fr)); min-height:35px }
+#extract-film img { aspect-ratio:1.8; min-height:35px }
+#clip-wall { min-height:78px }
+#clip-wall img,.wall-slot { aspect-ratio:1.8; border-radius:3px; background:var(--gl-tile) }
+#clip-wall .wall-slot.failed { background:rgba(255,51,85,.14) }
+.clip-view { display:grid; position:relative; grid-template-columns:minmax(0,240px) minmax(0,440px); align-items:center; gap:24px; padding-right:42px }
+.clip-player { border-radius:22px; box-shadow:0 14px 34px rgba(0,0,0,.38); isolation:isolate }
+.clip-player::after { content:""; position:absolute; inset:0; border:1px solid rgba(255,255,255,.14); border-radius:inherit; pointer-events:none; z-index:2 }
+.clip-player video { display:block; width:100%; height:100%; object-fit:contain }
+.clip-player:fullscreen { width:100%; height:100%; border-radius:0; background:#000 }
+.clip-player .missing-media { position:absolute; inset:0; background:#16151a }
+.clip-overlay-controls { position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .22s ease }
+.clip-overlay-controls::before { content:""; position:absolute; inset:55% 0 0; background:linear-gradient(transparent,rgba(0,0,0,.45)) }
+.clip-player[data-controls="visible"] .clip-overlay-controls,
+.clip-overlay-controls:has(:focus-visible,.clip-scrubber:active) { opacity:1 }
+.clip-overlay-controls button,.clip-scrubber { pointer-events:auto }
+.clip-player:not([data-controls="visible"]) .clip-overlay-controls:not(:has(:focus-visible,.clip-scrubber:active)) :is(button,input) { pointer-events:none }
+.clip-media-button { display:grid; place-items:center; width:34px; height:34px; padding:0; border:1px solid rgba(255,255,255,.14); border-radius:50%; background:rgba(255,255,255,.14); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); color:#fff; cursor:pointer }
+.clip-media-button svg { width:17px; height:17px }
+.clip-media-toggle { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:64px; height:64px }
+.clip-media-toggle svg { width:26px; height:26px }
+.clip-media-bar { position:absolute; inset:auto 14px 14px; display:grid; gap:4px }
+.clip-media-row { display:flex; align-items:center; gap:6px }
+.clip-media-time { margin-right:auto; color:rgba(255,255,255,.9); font-size:13px; font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap }
+.clip-scrubber { appearance:none; -webkit-appearance:none; width:100%; height:20px; margin:0; border:0; background:none; cursor:pointer }
+.clip-scrubber::-webkit-slider-runnable-track { height:3px; border-radius:3px; background:linear-gradient(to right,#F5822E var(--clip-progress,0%),rgba(255,255,255,.22) var(--clip-progress,0%)) }
+.clip-scrubber::-moz-range-track { height:3px; border-radius:3px; background:linear-gradient(to right,#F5822E var(--clip-progress,0%),rgba(255,255,255,.22) var(--clip-progress,0%)) }
+.clip-scrubber::-webkit-slider-thumb { appearance:none; width:12px; height:12px; margin-top:-4.5px; border-radius:50%; background:#fff; opacity:0 }
+.clip-scrubber::-moz-range-thumb { width:12px; height:12px; border:0; border-radius:50%; background:#fff; opacity:0 }
+.clip-overlay-controls:is(:hover,:focus-within) .clip-scrubber::-webkit-slider-thumb { opacity:1 }
+.clip-overlay-controls:is(:hover,:focus-within) .clip-scrubber::-moz-range-thumb { opacity:1 }
+.clip-edge-progress { position:absolute; inset:auto 0 0; height:2px; background:linear-gradient(to right,#F5822E var(--clip-progress,0%),rgba(255,255,255,.16) var(--clip-progress,0%)); pointer-events:none }
+.clip-info,.clip-details { display:grid; gap:22px; min-width:0 }
+.clip-info h2 { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; overflow:hidden; overflow-wrap:anywhere; color:#fff; font:600 30px/1.12 var(--display); letter-spacing:-.02em }
+.clip-meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px }
+.clip-meta:empty { display:none }
+.clip-meta-chip { display:inline-flex; align-items:center; gap:6px; padding:4px 9px; border:1px solid rgba(255,255,255,.1); border-radius:999px; background:rgba(255,255,255,.07); color:rgba(255,255,255,.9); font-size:12px; font-weight:600 }
+.clip-meta-score::before { content:""; width:5px; height:5px; border-radius:50%; background:#F5822E }
+.clip-detail-section { display:grid; gap:7px }
+.clip-detail-label { color:rgba(255,255,255,.5); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase }
+.clip-detail-section p { margin:0; color:rgba(255,255,255,.72); font:400 15px/1.5 var(--body-font); overflow-wrap:anywhere }
+.clip-detail-section .clip-hook { padding-left:12px; border-left:2px solid #F5822E; color:rgba(255,255,255,.92); font:500 16px/1.45 var(--body-font) }
+.clip-credit { display:flex; align-items:center; gap:7px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.55); font-size:12px; overflow-wrap:anywhere }
+.clip-credit svg { width:15px; height:15px; flex:none }
+.viewer-close { position:absolute; top:10px; right:10px }
+.btn.export { background:var(--ember); color:var(--ink); border:0 }
+@media(max-width:800px) { .top-nav { --nav-item:74px } }
+@media(max-width:520px) {
+  .top-nav { --nav-item:clamp(54px,16vw,72px) }
+  .hero-form { flex-wrap:wrap; justify-content:center }
+  .clip-view { grid-template-columns:minmax(0,1fr); padding-right:18px }
+  .clip-player { width:min(65%,220px); margin:auto }
+}
+
+/* Bigger, labelled House buttons in the rail (2026-11-19: "buttons need to be bigger and more clear and simple") */
+.sidebar .house-row { --side-icon-size:50px; min-height:calc(60px + 16px * (1 - var(--side-open-progress, 0))); padding-bottom:calc(18px * (1 - var(--side-open-progress, 0))); margin-bottom:4px }
+.sidebar .house-row .side-icon { border-radius:15px }
+.sidebar .house-row .side-icon svg { width:24px; height:24px; stroke-width:1.9 }
+.side-cap { position:absolute; bottom:3px; left:calc(var(--side-center) - var(--side-padding) - 34px); width:66px; text-align:center;
+  font-size:11px; font-weight:600; letter-spacing:.01em; color:rgba(255,255,255,.82); pointer-events:none;
+  opacity:calc(1 - var(--side-open-progress, 0) * 4) }
+.house-row[aria-current] .side-cap { color:#fff }
+.sidebar .side-footer .side-icon svg { width:20px; height:20px }
+.sidebar:not(.is-open) .engine-status { opacity:0; pointer-events:none }
+
+/* House icons: frosted chips (2026-11-19 "better designed icons") */
+.sidebar .house-row .side-icon { background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05)); border:1px solid rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 8px 18px -10px rgba(0,0,0,.6); color:rgba(255,255,255,.92); transition:transform .2s var(--sidebar-ease),background .2s }
+.sidebar .house-row:hover .side-icon { transform:translateY(-1px) }
+.sidebar .house-row .side-icon svg { width:26px; height:26px }
+.sidebar .house-row:is([aria-current],[data-highlighted]) .side-icon { background:#fff; color:#14100D; border-color:transparent;
+  box-shadow:0 10px 24px -10px rgba(0,0,0,.6) }
+.sidebar .house-row[aria-current] .side-icon svg [fill-opacity] { fill-opacity:.12 }
+
+/* Clip viewer actions: premium pills (2026-11-19 "make buttons look more premium") */
+.clip-actions { gap:10px; margin-top:6px }
+.btn.act { height:46px; padding:0 20px; border-radius:999px; font-size:15px; font-weight:600; gap:9px; letter-spacing:-.005em;
+  transition:transform .18s var(--sidebar-ease),box-shadow .18s,background .18s,opacity .18s }
+.btn.act:hover:not(:disabled) { transform:translateY(-1px) }
+.btn.act:active:not(:disabled) { transform:translateY(0) scale(.98) }
+.btn.act:disabled { opacity:.42; cursor:default }
+.btn.cream.act { padding:0 7px 0 20px; background:linear-gradient(180deg,#fff,#EEEBE6); color:#14100D; border:1px solid rgba(255,255,255,.9);
+  box-shadow:inset 0 -1px 0 rgba(0,0,0,.08),0 12px 28px -14px rgba(0,0,0,.7) }
+.btn.cream.act .btn-mark { width:32px; height:32px; background:#14100D; color:#fff }
+.btn.cream.act .btn-mark svg { width:16px; height:16px; stroke-width:2.4 }
+.btn.act-glass { background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.04)); color:#fff; border:1px solid rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18) }
+.btn.act-glass:hover:not(:disabled) { background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.07)) }
+.btn.act-ember { background:linear-gradient(180deg,#FFA45E,#F5822E 55%,#E36A1C); color:#1A0D04; border:1px solid rgba(255,190,140,.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 12px 28px -12px rgba(245,130,46,.75) }
+.act-ic { display:grid; place-items:center } .act-ic svg { width:17px; height:17px; stroke-width:2.2 }
+.clip-nav { display:flex; align-items:center; gap:12px; margin-top:14px }
+.btn.nav-round { width:42px; height:42px; padding:0; border-radius:50%; display:grid; place-items:center; color:#fff;
+  background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.16); box-shadow:inset 0 1px 0 rgba(255,255,255,.18) }
+.btn.nav-round svg { width:18px; height:18px; stroke-width:2.2 }
+.btn.nav-round:disabled { opacity:.35 }
+.clip-count { font-size:13px; font-weight:600; color:rgba(255,255,255,.7); font-variant-numeric:tabular-nums; min-width:44px; text-align:center }
+
+/* Live stream cards */
+.live-card { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:14px }
+.live-art { position:relative }
+.live-badge { position:absolute; left:6px; top:6px; padding:2px 7px; border-radius:6px; background:#e5484d; color:#fff; font-size:10px; font-weight:800; letter-spacing:.06em }
+.live-card .live-stop { height:38px; padding:0 16px; font-size:13px }
+.sidebar { contain:layout style }
+.sidebar .side-label { transition:opacity 220ms var(--sidebar-glide) }
+
+/* Reject feedback sheet */
+.reject-sheet { display:grid; gap:10px; margin-top:4px; padding:16px; border-radius:18px; background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.12); box-shadow:inset 0 1px 0 rgba(255,255,255,.12); animation:sheetIn .28s var(--sidebar-glide) both }
+.reject-sheet[hidden] { display:none }
+@keyframes sheetIn { from { opacity:0; transform:translateY(6px) } }
+.reject-sheet strong { font:600 17px/1.2 Switzer,sans-serif; letter-spacing:-.01em }
+.reject-sheet small { color:rgba(255,255,255,.55); font-size:12px; margin-top:-6px }
+.reason-chips { display:flex; flex-wrap:wrap; gap:8px }
+.reason-chip { height:34px; padding:0 14px; border-radius:999px; font-size:13px; font-weight:600; color:rgba(255,255,255,.86); cursor:pointer;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); transition:background .15s,color .15s,border-color .15s }
+.reason-chip:hover { background:rgba(255,255,255,.12) }
+.reason-chip[aria-pressed=true] { background:#fff; color:#14100D; border-color:#fff }
+.reject-sheet textarea { resize:none; border-radius:14px; padding:10px 12px; font-family:inherit; font-size:14px; font-weight:500; line-height:1.4; color:#fff; background:rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.12); outline:none }
+.reject-sheet textarea:focus { border-color:rgba(255,255,255,.3) }
+.reject-actions { display:flex; gap:10px; justify-content:flex-end }
+.btn.act-danger { background:linear-gradient(180deg,#ff6b6f,#e5484d); color:#fff; border:1px solid rgba(255,150,150,.5); box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 12px 26px -12px rgba(229,72,77,.7) }
+
+/* Approve moment */
+.btn.cream.act.is-approved { animation:approvePop .55s var(--sidebar-ease) both; position:relative }
+.btn.cream.act.is-approved::after { content:""; position:absolute; inset:-2px; border-radius:999px; border:2px solid rgba(255,255,255,.75);
+  animation:approveRing .7s var(--sidebar-glide) both; pointer-events:none }
+.btn.cream.act.is-approved .btn-mark { background:#34c759; transition:background .25s }
+@keyframes approvePop { 0% { transform:scale(1) } 35% { transform:scale(.94) } 70% { transform:scale(1.05) } 100% { transform:scale(1) } }
+@keyframes approveRing { from { opacity:.9; transform:scale(1) } to { opacity:0; transform:scale(1.35, 1.6) } }
+.clip-player { position:relative }
+.clip-player.approve-glow { animation:frameGlow 1.1s var(--sidebar-glide) both }
+@keyframes frameGlow { 0% { box-shadow:0 0 0 0 rgba(52,199,89,0) } 25% { box-shadow:0 0 0 3px rgba(52,199,89,.85),0 0 60px rgba(52,199,89,.35) } 100% { box-shadow:0 0 0 0 rgba(52,199,89,0) } }
+.approve-stamp { position:absolute; inset:0; z-index:6; display:grid; place-content:center; justify-items:center; gap:12px; pointer-events:none;
+  background:radial-gradient(circle at 50% 50%, rgba(0,0,0,.35), rgba(0,0,0,0) 70%); animation:stampLife 1.5s ease both }
+.approve-disc { width:96px; height:96px; border-radius:50%; display:grid; place-items:center;
+  background:rgba(255,255,255,.16); -webkit-backdrop-filter:blur(14px) saturate(1.4); backdrop-filter:blur(14px) saturate(1.4);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 18px 40px -12px rgba(0,0,0,.6); animation:discIn .55s cubic-bezier(.34,1.56,.64,1) both }
+.approve-disc svg { width:64px; height:64px; fill:none; stroke:#fff; stroke-width:3.2; stroke-linecap:round; stroke-linejoin:round }
+.approve-disc circle { stroke:#34c759; stroke-dasharray:151; stroke-dashoffset:151; animation:draw .5s .1s ease-out forwards }
+.approve-disc path { stroke-dasharray:36; stroke-dashoffset:36; animation:draw .32s .42s ease-out forwards }
+.approve-stamp span { font:600 15px/1 Switzer,sans-serif; letter-spacing:.02em; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.5);
+  opacity:0; animation:labelIn .3s .5s ease-out forwards }
+@keyframes draw { to { stroke-dashoffset:0 } }
+@keyframes discIn { from { opacity:0; transform:scale(.6) } }
+@keyframes labelIn { from { opacity:0; transform:translateY(6px) } to { opacity:1; transform:none } }
+@keyframes stampLife { 0%,75% { opacity:1 } 100% { opacity:0 } }
+@media (prefers-reduced-motion:reduce) { .btn.cream.act.is-approved, .btn.cream.act.is-approved::after, .clip-player.approve-glow { animation:none } }
+
+.sidebar:not(.is-open) .side-highlight { opacity:0 !important }
+
+/* Edit sheet */
+.edit-sheet[hidden] { display:none }
+.ed-field { display:grid; gap:7px }
+.ed-field > span { font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.5) }
+.ed-field input { height:42px; border-radius:12px; padding:0 12px; font-family:inherit; font-size:14px; font-weight:500; color:#fff;
+  background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.12); outline:none }
+.ed-field input:focus { border-color:rgba(255,255,255,.3) }
+.ed-trim { display:flex; gap:10px }
+.ed-step { display:flex; align-items:center; gap:6px; padding:4px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12) }
+.ed-step button { height:30px; padding:0 10px; border-radius:999px; border:0; font:600 12px inherit; font-family:inherit; color:#fff; background:rgba(255,255,255,.1); cursor:pointer }
+.ed-step button:hover { background:rgba(255,255,255,.18) }
+.ed-step b { min-width:52px; text-align:center; font-size:13px; font-variant-numeric:tabular-nums }
+.ed-field em { font-style:normal; font-size:12px; color:rgba(255,255,255,.55) }
+
+.bar-brand .brand-logo { height:26px; width:auto; display:block; filter:drop-shadow(0 2px 8px rgba(0,0,0,.35)) }
+.side-brand .brand-chip { background:none !important; border:0 !important; box-shadow:none !important; padding:0 }
+.side-brand .brand-chip img { width:100%; height:100%; object-fit:contain; border-radius:8px }
+.side-brand .side-label { letter-spacing:.02em !important; font-weight:700 }
+.splash-logo { width:min(520px,70vw); height:auto; display:block; filter:drop-shadow(0 10px 40px rgba(255,60,140,.35)) }
+
+.live-card { grid-column:1 / -1; min-height:0 }
+.live-card .job-copy strong, .job-card .job-copy strong { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; word-break:normal; overflow-wrap:normal }
+.live-card .job-art { width:200px }
+
+/* Research: live streams right now */
+.live-now { margin:6px 0 22px }
+.live-now .section-head { display:flex; align-items:baseline; gap:12px }
+.live-now .section-head small { color:rgba(255,255,255,.55); font-size:12px }
+.live-dot { display:inline-block; width:10px; height:10px; border-radius:50%; background:#e5484d; margin-right:10px; box-shadow:0 0 0 4px rgba(229,72,77,.22); animation:livePulse 1.6s ease-in-out infinite; vertical-align:2px }
+@keyframes livePulse { 50% { box-shadow:0 0 0 7px rgba(229,72,77,.05) } }
+.live-row { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(260px,280px); gap:14px; overflow-x:auto; padding-bottom:6px; scrollbar-width:thin }
+.live-tile { padding:10px; display:grid; gap:9px; align-content:start }
+.live-tile-art { position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:#111 }
+.live-tile-art img { width:100%; height:100%; object-fit:cover; display:block }
+.live-tile .live-badge { position:absolute; left:8px; top:8px }
+.live-watch { position:absolute; left:8px; bottom:8px; padding:3px 8px; border-radius:7px; background:rgba(0,0,0,.65); color:#fff; font-size:12px; font-weight:700; font-variant-numeric:tabular-nums }
+.live-who { display:flex; align-items:center; gap:8px; min-width:0 }
+.live-who strong { font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.live-ava { width:26px; height:26px; border-radius:50%; flex:none }
+.live-title { margin:0; font-size:12.5px; line-height:1.35; color:rgba(255,255,255,.72); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:34px }
+.live-acts { display:flex; gap:8px }
+.live-acts .btn.act { height:38px; font-size:13px; padding:0 14px }
+.live-acts .live-go { flex:1; justify-content:center; padding:0 14px }
+
+/* no outline around the selected/hovered row pill in the open sidebar (2026-11-19) */
+.sidebar .side-highlight { border-color:transparent !important; box-shadow:none !important; background:rgba(255,255,255,.10) !important }
+</style>
+</head>
+<body>
+<div class="scenery" aria-hidden="true">
+  <div class="scenery-layer" id="scenery-base"></div>
+  <div class="scenery-layer" id="scenery-fade"></div>
+  <div class="scenery-tint"></div>
+</div>
+<div class="scenery-credit" id="scenery-credit" aria-hidden="true">
+</div>
+<header class="bar">
+  <div class="bar-brand"><img class="brand-logo" src="brand/vi-wordmark.png" alt="VI Clips"></div>
+  <nav class="top-nav" aria-label="Main navigation" data-active="content">
+    <button type="button" data-route="content" aria-current="page">Content</button>
+    <button type="button" data-route="research">Research</button>
+    <button type="button" data-route="knowledge">Knowledge</button>
+  </nav>
+  <div class="bar-tools">
+    <button type="button" class="bar-icon" id="photo-dim" aria-label="Dim background photos" aria-pressed="false" data-icon="moon"></button>
+    <button type="button" class="bar-icon" data-action="help" aria-label="Help">?</button>
+  </div>
+</header>
+<nav id="sidebar" class="sidebar" aria-label="Studio">
+  <div class="sidebar-glass" aria-hidden="true"></div>
+  <div class="sidebar-rim-shadow" aria-hidden="true">
+    <svg class="sidebar-rim">
+      <defs>
+        <path id="sidebar-outline"/>
+        <clipPath id="sidebar-clip"><use href="#sidebar-outline"/></clipPath>
+        <linearGradient id="sidebar-rim-gradient" x2="100%" y2="100%">
+          <stop offset="0" stop-color="rgba(255,255,255,.58)"/>
+          <stop offset=".55" stop-color="rgba(255,214,190,.36)"/>
+          <stop offset="1" stop-color="rgba(255,255,255,.28)"/>
+        </linearGradient>
+      </defs>
+      <use href="#sidebar-outline" fill="none" stroke="white" stroke-opacity=".06" stroke-width="3.25" clip-path="url(#sidebar-clip)"/>
+      <use href="#sidebar-outline" fill="none" stroke="url(#sidebar-rim-gradient)" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="side-toggle-wrap">
+    <button id="sidebar-toggle" class="side-icon" type="button" aria-label="Expand sidebar" aria-expanded="false" aria-controls="sidebar-content"></button>
+    <span id="sidebar-tooltip" class="side-toggle-tooltip" aria-hidden="true">Expand</span>
+  </div>
+  <div class="sidebar-content" id="sidebar-content">
+    <div class="sidebar-layout">
+      <span class="side-highlight" aria-hidden="true"></span>
+      <div class="side-head">
+        <span class="side-brand"><span class="side-icon brand-chip"><img src="brand/vi-icon.png" alt=""></span><span class="side-label">VI Clips</span></span>
+      </div>
+      <div class="side-profile">
+        <span class="side-avatar"><img src="brand/vi-icon.png" alt=""><i></i></span>
+        <span class="side-label"><strong>You</strong></span>
+      </div>
+      <div class="side-nav">
+        <span class="eyebrow side-menu side-label">Menu</span>
+        <button class="side-row house-row" aria-label="Content House" title="Content House" data-route="content"><span class="side-icon" data-icon="house-content"></span><span class="side-label">Content House</span><span class="side-cap" aria-hidden="true">Content</span></button>
+        <button class="side-row house-row" aria-label="Research House" title="Research House" data-route="research"><span class="side-icon" data-icon="house-research"></span><span class="side-label">Research House</span><span class="side-cap" aria-hidden="true">Research</span></button>
+        <button class="side-row house-row" aria-label="Knowledge House" title="Knowledge House" data-route="knowledge"><span class="side-icon" data-icon="house-knowledge"></span><span class="side-label">Knowledge House</span><span class="side-cap" aria-hidden="true">Knowledge</span></button>
+      </div>
+      <div class="side-footer">
+        <div class="side-promo engine-status" id="engine-status" role="status" title="Checking engine"><i></i><span class="side-label" id="engine-copy">Checking engine</span></div>
+        <button class="side-row" aria-label="Settings" title="Settings" data-action="settings"><span class="side-icon" data-icon="sliders"></span><span class="side-label">Settings</span></button>
+        <button class="side-row" aria-label="Log out" title="Log out" data-action="logout"><span class="side-icon" data-icon="logout"></span><span class="side-label">Log out</span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="screen house" id="content" aria-label="Content House">
+    <section class="panel house-hero" data-drop>
+      <div class="hero-body">
+        <h1>Turn any video into <span class="accent">clips</span></h1>
+        <form id="hero-form" class="hero-form">
+          <input id="hero-url" type="text" inputmode="url" required aria-label="YouTube link" placeholder="Paste a YouTube link…">
+          <button class="btn cream" type="submit">Make clips <span class="btn-mark" data-icon="plus"></span></button>
+        </form>
+        <button class="btn ghost" data-action="import"><span data-icon="upload"></span>or drop a file</button>
+      </div>
+    </section>
+    <section class="house-section" id="working" hidden>
+      <div class="section-head"><h2>In the works</h2></div>
+      <div class="job-grid" id="jobs"></div>
+    </section>
+    <section class="house-section">
+      <div class="section-head"><h2>Your clips</h2><div class="filter-pills" id="clip-filters" aria-label="Clip filters"></div></div>
+      <div id="clips"></div>
+    </section>
+  </section>
+  <section class="screen house" id="research" aria-label="Research House" hidden>
+    <header class="panel house-heading"><div><h1>Channels worth clipping</h1><p id="research-meta"></p></div><button class="btn ghost refresh" data-action="research-refresh"><i aria-hidden="true">↻</i> Refresh</button></header>
+    <section class="live-now" id="live-now"><div class="section-head"><h2><span class="live-dot"></span>Live streams</h2><small id="live-now-meta"></small></div><div class="live-row" id="live-now-row"></div></section>
+    <div class="filter-pills house-filters" id="research-filters" aria-label="Sort channels"></div>
+    <div id="research-results"></div>
+  </section>
+  <section class="screen house" id="knowledge" aria-label="Knowledge House" hidden>
+    <header class="panel house-heading"><div><h1>What makes clips go viral</h1><p id="knowledge-meta"></p></div><button class="btn ghost refresh" data-action="knowledge-refresh"><i aria-hidden="true">↻</i> Update now</button></header>
+    <div class="filter-pills house-filters" id="knowledge-filters" aria-label="Principle categories"></div>
+    <div id="knowledge-results"></div>
+    <div id="knowledge-log"></div>
+  </section>
+</main>
+
+<dialog id="import-dialog" aria-labelledby="import-title">
+  <button class="btn circle import-close" data-action="close" aria-label="Close import">×</button>
+  <div class="modal-body">
+    <div class="modal-top"><span class="eyebrow accent">Import clips</span><span class="steps" aria-label="Import step"><i class="on"></i><i></i><i></i><i></i></span></div>
+    <div class="import-intro"><h2 id="import-title">Drop a video.<br><span class="accent">Find the moments.</span></h2></div>
+    <div class="film" id="import-film" aria-hidden="true"></div>
+    <form class="import-link" id="import-form"><span class="yt" data-icon="play"></span><input type="text" inputmode="url" id="import-url" autofocus required aria-label="YouTube link" placeholder="Paste a YouTube link"><button class="btn paste" type="submit">Make clips <span class="btn-mark" data-icon="plus"></span></button></form>
+    <small class="center">Import videos you own or have permission to clip.</small>
+    <div class="divider">OR</div>
+    <div class="dropzone" data-drop><span class="upload-circle" data-icon="upload"></span><div><strong>Drop video files</strong><small id="selected-files"></small> <button class="link-button" data-action="pick-folder">Choose a folder</button></div><button class="btn ghost" data-action="pick-files">Choose files</button><button class="btn cream" data-action="import-files" hidden>Make clips</button></div>
+    <p id="import-error" class="form-message" role="status" hidden></p>
+  </div>
+</dialog>
+<dialog id="extract-dialog" aria-labelledby="extract-title">
+  <div class="modal-body">
+    <div class="modal-top"><span class="eyebrow accent" id="extract-status"></span><span class="steps" aria-hidden="true"><i></i><i></i><i></i><i></i></span><button class="btn ghost" data-action="minimize">↘ Minimize</button></div>
+    <div class="extract-heading" aria-live="polite"><div><h2 id="extract-title"></h2><p id="extract-sub"></p></div><div class="counter" id="extract-counter" hidden><span id="count"></span> <small id="count-total"></small></div></div>
+    <div class="film extract-film" id="extract-film" aria-hidden="true"></div>
+    <div class="progress" id="extract-progress" role="progressbar" aria-label="Current stage progress" aria-valuemin="0" aria-valuemax="100"><div id="progress"></div></div>
+    <div class="clip-wall" id="clip-wall" aria-hidden="true"></div>
+    <div class="extract-footer"><small id="keep-working">Keep working while this runs in the corner.</small><div class="actions" id="ready-actions" hidden><button class="btn cream" data-action="open-content">Open in Content House <span class="btn-mark" aria-hidden="true">→</span></button></div><span class="chip" id="extract-source"></span></div>
+  </div>
+</dialog>
+<dialog id="clip-dialog" aria-labelledby="clip-title">
+  <div class="modal-body clip-view">
+    <div id="clip-player" class="clip-player" tabindex="-1" autofocus></div>
+    <div class="clip-info"><header><h2 id="clip-title"></h2><div class="clip-meta" id="clip-meta"></div></header><div class="clip-details" id="clip-details"></div><div class="house-actions clip-actions"><div class="rate-row" id="rate-row" aria-label="Rate this clip 1 to 10"></div><button class="btn act act-glass" data-action="edit"><span class="act-ic" data-icon="pen"></span>Edit</button><button class="btn act act-ember" data-action="export"><span class="act-ic" data-icon="download"></span>Export</button></div><div class="clip-nav"><button class="btn nav-round" data-action="prev" aria-label="Previous clip" data-icon="left"></button><span class="clip-count" id="clip-count"></span><button class="btn nav-round" data-action="next" aria-label="Next clip" data-icon="right"></button></div><form class="reject-sheet edit-sheet" id="edit-sheet" hidden><strong>What should change?</strong><small>Say it like you'd tell an editor. VI Clips applies it and re-cuts.</small><textarea id="ed-text" rows="3" maxlength="600" placeholder="e.g. make the hook crazier, start 2 seconds later, end right after he screams"></textarea><div class="reject-actions"><button type="button" class="btn act act-glass" id="edit-cancel">Cancel</button><button type="submit" class="btn cream act" id="edit-save">Apply<span class="btn-mark" data-icon="check"></span></button></div></form><form class="reject-sheet" id="rate-sheet" hidden><strong id="rate-q">What would make it a 10?</strong><small>Your answer trains the next clips.</small><textarea id="rate-note" rows="3" maxlength="500" placeholder="e.g. start right on the scream, shorter, funnier hook"></textarea><div class="reject-actions"><button type="button" class="btn act act-glass" id="rate-cancel">Cancel</button><button type="submit" class="btn act act-yes" id="rate-save">Save</button></div></form><form class="reject-sheet" id="approve-sheet" hidden><strong>Why do you like it?</strong><small>Optional. Trains the next clips.</small><div class="reason-chips" id="like-chips"></div><textarea id="approve-note" rows="2" maxlength="500" placeholder="Anything else? (optional)"></textarea><div class="reject-actions"><button type="button" class="btn act act-glass" id="approve-cancel">Cancel</button><button type="submit" class="btn act act-yes"><span class="act-ic" data-icon="check"></span>Approve</button></div></form><form class="reject-sheet" id="reject-sheet" hidden><strong>Why reject it?</strong><small>Your answer trains the next clips.</small><div class="reason-chips" id="reason-chips"></div><textarea id="reject-note" rows="2" maxlength="500" placeholder="Anything else? (optional)"></textarea><div class="reject-actions"><button type="button" class="btn act act-glass" id="reject-cancel">Cancel</button><button type="submit" class="btn act act-danger"><span class="act-ic" data-icon="x"></span>Reject clip</button></div></form></div>
+    <button class="btn ghost circle viewer-close" data-action="close" aria-label="Close clip">×</button>
+  </div>
+</dialog>
+<dialog id="details-dialog" aria-labelledby="detail-title"><div class="modal-body"><div class="extract-heading"><h2 id="detail-title"></h2><button class="btn ghost circle" data-action="close" aria-label="Close">×</button></div><div id="detail-body"></div></div></dialog>
+<button id="mini" class="btn cream" data-action="restore" hidden></button>
+<input type="file" id="files" accept="video/*" multiple hidden>
+<input type="file" id="folder" webkitdirectory multiple hidden>
+<div class="toast" id="toast" role="status" hidden></div>
+<div class="splash" id="splash" hidden><div class="splash-frame"><img class="splash-logo" src="brand/vi-wordmark.png" alt="VI Clips"></div></div>
+<script>
+const $ = id => document.getElementById(id);
+const cleanTitle = t => String(t).replace(/^[^\w(]+/u, '').replace(/\s*\d{4}-\d{2}-\d{2}\s*\d{1,2}:\d{2}/, '').replace(/\s+GET IN HERE!?/i, '');
+const score10 = v => (Math.round(Number(v) / 10 * 10) / 10).toFixed(1).replace(/\.0$/, '');
+const all = selector => [...document.querySelectorAll(selector)];
+const paths = {
+  search:'M15 15l5 5M17 10a7 7 0 1 1-14 0 7 7 0 1 1 14 0z',
+  moon:'M20.9 14.1A9 9 0 0 1 9.9 3.1 9 9 0 1 0 20.9 14.1z',
+  plus:'M12 5v14M5 12h14', home:'m3 11 9-8 9 8v9h-6v-6H9v6H3z', editor:'M3 10h18v10H3zM3 10 2 5l17-3 1 5zM6 4l3 4m4-5 3 4',
+  bulb:'M9 18h6m-5 3h4M8 15c0-2-2-3-2-6a6 6 0 0 1 12 0c0 3-2 4-2 6z', folder:'M3 6h7l2 2h9v12H3z',
+  video:'M4 4h16v16H4zM10 8l6 4-6 4z', clips:'M8 3h12v13H8zM5 7H3v14h13v-2m-5-13 5 3-5 3z',
+  image:'M3 4h18v16H3zM3 17l6-6 4 4 3-3 5 4M16 8h.1', upload:'M12 16V3M7 8l5-5 5 5M4 15v5h16v-5',
+  send:'m3 10 18-7-6 18-4-8-8-3zm8 3L21 3', user:'M4 21v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0z',
+  dots:'M4 12h2m5 0h2m5 0h2', help:'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0zM9 9a3 3 0 1 1 4 3c-1 .5-1 1-1 2m0 3h.01',
+  clipboard:'M8 5H5v16h14V5h-3M8 3h8v5H8zM8 12h8m-8 4h8',
+  expand:'M18 4v16M4 12h10m-4-4 4 4-4 4', collapse:'M6 4v16m14-8H10m4-4-4 4 4 4',
+  chevron:'m6 9 6 6 6-6', logout:'M11 4H4v16h7m-2-8h11m-4-4 4 4-4 4',
+  play:'m8 4 12 8-12 8z', sliders:'M3 6h18M3 12h18M3 18h18M8 3v6m8 0v6m-6 0v6'
+};
+const richIcons = {
+  // Content House: a stack of vertical clips, the front one playing
+  'house-content':'<rect x="3" y="9.4" width="18" height="11.2" rx="2.4" fill="currentColor" fill-opacity=".14"/><path d="M3.6 9.2 19.4 4.6l.9 3.1L4.5 12.3z" fill="currentColor" fill-opacity=".14"/><path d="M8.4 7.8l2.4 2.9M13.3 6.4l2.4 2.9"/><path d="M10.6 13.2v4.4l3.6-2.2z" fill="currentColor" stroke="none"/>',
+  // Research House: a lens over rising bars (finding channels that pop)
+  'house-research':'<circle cx="10.4" cy="10.4" r="7" fill="currentColor" fill-opacity=".16"/><path d="M15.6 15.6 21 21"/><path d="M7.6 12.8v-1.6M10.4 12.8V8.6M13.2 12.8v-2.6"/>',
+  // Knowledge House: an open book with a spark (it keeps learning)
+  'house-knowledge':'<path d="M2.8 6.3c3.1-1.2 6.2-.9 9.2 1 3-1.9 6.1-2.2 9.2-1v12.6c-3.1-1.1-6.2-.8-9.2 1-3-1.8-6.1-2.1-9.2-1z" fill="currentColor" fill-opacity=".16"/><path d="M12 7.3v12.6"/><path d="M18.4 1.6v3.2M16.8 3.2H20" opacity=".9"/>',
+};
+Object.assign(paths, {pen:'M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4', check:'M5 12.5l4.5 4.5L19 7.5', x:'M6.5 6.5l11 11M17.5 6.5l-11 11', download:'M12 4v11m-5-5 5 5 5-5M5 20h14',
+  left:'M14.5 6l-6 6 6 6', right:'M9.5 6l6 6-6 6'});
+const icon = name => richIcons[name]
+  ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${richIcons[name]}</svg>`
+  : `<svg viewBox="0 0 24 24" fill="${name === 'play' ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${paths[name]}"/></svg>`;
+all('[data-icon]').forEach(el => el.insertAdjacentHTML('afterbegin', icon(el.dataset.icon)));
+
+const queries = new URLSearchParams(location.search);
+const sidebar = $('sidebar');
+const sidebarToggle = $('sidebar-toggle');
+const toggleWrap = sidebarToggle.parentElement;
+const sidebarLayout = sidebar.querySelector('.sidebar-layout');
+const sideNav = sidebar.querySelector('.side-nav');
+const sidebarOutline = $('sidebar-outline');
+const hoverPill = sidebar.querySelector('.side-highlight');
+const sidebarOverride = queries.get('sidebar') === 'open';
+const sidebarDemo = queries.get('demo') === 'sidebar';
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const sidebarRowSelector = '.side-row';
+const lerp = (from, to, progress) => from + (to - from) * progress;
+const topNav = document.querySelector('.top-nav');
+let sidebarFrame;
+let sidebarProgress = 0;
+let sidebarCurve = 6;
+let tooltipTimer;
+let pointerRow;
+let focusRow;
+let demoRow;
+let highlightedRow;
+
+function drawSidebarShape(width, height, curve) {
+  const right = width - .625;
+  const bottom = height - .625;
+  const middle = bottom / 2;
+  const radius = Math.min(22, right / 3, bottom / 4);
+  const path = [
+    `M ${radius} .5 H ${right - radius} Q ${right} .5 ${right} ${radius}`,
+    `C ${right} ${bottom * .21} ${right - curve} ${bottom * .31} ${right - curve} ${middle}`,
+    `C ${right - curve} ${bottom * .69} ${right} ${bottom * .79} ${right} ${bottom - radius}`,
+    `Q ${right} ${bottom} ${right - radius} ${bottom} H ${radius}`,
+    `Q .5 ${bottom} .5 ${bottom - radius} V ${radius} Q .5 .5 ${radius} .5 Z`
+  ].join(' ');
+  sidebarOutline.setAttribute('d', path);
+}
+
+function sidebarEase(time) {
+  // Invert the x component of cubic-bezier(.22, 1, .36, 1).
+  let low = 0;
+  let high = 1;
+  for (let i = 0; i < 16; i++) {
+    const t = (low + high) / 2;
+    const u = 1 - t;
+    const x = 3 * u * u * t * .22 + 3 * u * t * t * .36 + t ** 3;
+    if (x < time) low = t;
+    else high = t;
+  }
+  return 1 - (1 - (low + high) / 2) ** 3;
+}
+
+function paintSidebar(progress, curve) {
+  sidebarProgress = progress;
+  sidebarCurve = curve;
+  sidebar.style.setProperty('--side-open-progress', progress);
+  sidebar.style.setProperty('--side-sweep', reducedMotion.matches ? 0 : progress);
+  const closedWidth = parseFloat(getComputedStyle(sidebar).getPropertyValue('--sidebar-closed'));
+  const width = lerp(closedWidth, sidebarLayout.offsetWidth, progress);
+  sidebar.style.width = `${width}px`;
+  drawSidebarShape(width, sidebar.offsetHeight, width * .072);
+  syncSidebarHighlight();
+}
+
+function untiltedRect(el) {
+  let left = 0, top = 0;
+  for (let node = el; node; node = node.offsetParent) { left += node.offsetLeft; top += node.offsetTop; }
+  for (let node = el.parentElement; node && node !== document.body; node = node.parentElement) { left -= node.scrollLeft; top -= node.scrollTop; }
+  return { left, top, width: el.offsetWidth, height: el.offsetHeight, right: left + el.offsetWidth, bottom: top + el.offsetHeight };
+}
+
+function placeSidebarPill(pill, row, icon) {
+  pill.classList.toggle('is-visible', Boolean(row));
+  if (!row) return;
+  // Layout-space rects (offsets ignore the sidebar's 3D tilt; getBoundingClientRect would not).
+  const layout = untiltedRect(sidebarLayout);
+  const bounds = untiltedRect(row);
+  const chip = icon ? untiltedRect(icon) : null;
+  const left = chip ? lerp(chip.left - 2, bounds.left, sidebarProgress) : bounds.left;
+  const top = chip ? lerp(chip.top - 2, bounds.top, sidebarProgress) : bounds.top;
+  const width = chip ? lerp(chip.width + 4, bounds.width, sidebarProgress) : bounds.width;
+  const height = chip ? lerp(chip.height + 4, bounds.height, sidebarProgress) : bounds.height;
+  const viewport = sideNav.contains(row) ? untiltedRect(sideNav) : null;
+  const clipTop = viewport ? Math.max(0, viewport.top - top) : 0;
+  const clipBottom = viewport ? Math.max(0, top + height - viewport.bottom) : 0;
+  pill.style.clipPath = `inset(${clipTop}px 0 ${clipBottom}px 0)`;
+  pill.style.transform = `translate(${left - layout.left}px,${top - layout.top}px)`;
+  const h = untiltedRect(sidebar).height || 1, rowMid = (top - layout.top + height / 2 + (sidebarLayout.offsetTop || 0)) / h;
+  const inset = sidebar.offsetWidth * .072 * Math.sin(Math.PI * Math.max(0, Math.min(1, rowMid))) ** 2 * sidebarProgress;
+  pill.style.width = `${Math.max(0, width - inset)}px`;
+  pill.style.height = `${height}px`;
+}
+
+function syncSidebarHighlight() {
+  const row = demoRow || pointerRow || focusRow || sidebar.querySelector('.side-row[aria-current]');
+  if (highlightedRow !== row) {
+    highlightedRow?.removeAttribute('data-highlighted');
+    row?.setAttribute('data-highlighted', '');
+    highlightedRow = row;
+  }
+  placeSidebarPill(hoverPill, row, row?.querySelector('.side-icon'));
+}
+
+function hideSidebarTooltip() {
+  clearTimeout(tooltipTimer);
+  toggleWrap.classList.remove('show-tooltip');
+}
+
+function setSidebar(expanded, remember = false, animate = true) {
+  cancelAnimationFrame(sidebarFrame);
+  hideSidebarTooltip();
+  sidebar.classList.toggle('is-open', expanded);
+  sidebarToggle.innerHTML = icon(expanded ? 'collapse' : 'expand');
+  sidebarToggle.setAttribute('aria-expanded', String(expanded));
+  const label = expanded ? 'Collapse' : 'Expand';
+  sidebarToggle.setAttribute('aria-label', label + ' sidebar');
+  $('sidebar-tooltip').textContent = label;
+  syncSidebarHighlight();
+
+  const target = Number(expanded);
+  const targetCurve = expanded ? 14 : 6;
+  const from = sidebarProgress;
+  const fromCurve = sidebarCurve;
+  if (!animate || reducedMotion.matches || from === target) {
+    paintSidebar(target, targetCurve);
+  } else {
+    const started = performance.now();
+    const distance = Math.abs(target - from);
+    const duration = (expanded ? 340 : 300) * distance;
+    const tween = now => {
+      const time = Math.max(0, Math.min(1, (now - started) / duration));
+      const progress = time === 1 ? 1 : sidebarEase(time);
+      const bend = 0;
+      paintSidebar(lerp(from, target, progress), Math.min(22.3, lerp(fromCurve, targetCurve, time) + bend));
+      if (time < 1) sidebarFrame = requestAnimationFrame(tween);
+    };
+    sidebarFrame = requestAnimationFrame(tween);
+  }
+  if (remember && !sidebarOverride && !sidebarDemo) {
+    try { localStorage.setItem('vi-sidebar-open', String(expanded)); } catch {}
+  }
+}
+
+let sidebarSaved = false;
+try { sidebarSaved = localStorage.getItem('vi-sidebar-open') === 'true'; } catch {}
+setSidebar(!sidebarDemo && (sidebarOverride || sidebarSaved), false, false);
+window.addEventListener('resize', () => paintSidebar(sidebarProgress, sidebarCurve));
+reducedMotion.addEventListener('change', () => setSidebar(sidebar.classList.contains('is-open'), false, false));
+sideNav.addEventListener('scroll', syncSidebarHighlight, {passive:true});
+sidebarToggle.addEventListener('click', () => setSidebar(!sidebar.classList.contains('is-open'), true));
+toggleWrap.addEventListener('pointerenter', event => {
+  if (event.pointerType === 'touch') return;
+  tooltipTimer = setTimeout(() => toggleWrap.classList.add('show-tooltip'), 300);
+});
+toggleWrap.addEventListener('pointerleave', hideSidebarTooltip);
+
+/* Interactive 3D tilt: flat at rest; while the pointer is over the panel it tips toward it. */
+const sideTilt = { baseX: 0, baseY: 0, maxX: 2, maxY: 3.5, cx: 0, cy: 0, tx: 0, ty: 0, raf: 0 };
+function sideTiltFrame() {
+  sideTilt.cx += (sideTilt.tx - sideTilt.cx) * .075;
+  sideTilt.cy += (sideTilt.ty - sideTilt.cy) * .075;
+  sidebar.style.transform = `perspective(1400px) rotateX(${sideTilt.cx.toFixed(2)}deg) rotateY(${sideTilt.cy.toFixed(2)}deg)`;
+  const settled = Math.abs(sideTilt.tx - sideTilt.cx) < .01 && Math.abs(sideTilt.ty - sideTilt.cy) < .01;
+  sideTilt.raf = settled ? 0 : requestAnimationFrame(sideTiltFrame);
+}
+function aimSideTilt(nx, ny) { // nx, ny in -0.5..0.5 across the panel; null = rest
+  if (reducedMotion.matches) return;
+  sideTilt.tx = nx === null ? sideTilt.baseX : sideTilt.baseX - ny * 2 * sideTilt.maxX;
+  sideTilt.ty = nx === null ? sideTilt.baseY : sideTilt.baseY + nx * 2 * sideTilt.maxY;
+  if (!sideTilt.raf) sideTilt.raf = requestAnimationFrame(sideTiltFrame);
+}
+window.addEventListener('pointermove', event => {
+  if (event.pointerType === 'touch') return;
+  const left = sidebar.offsetLeft, top = sidebar.offsetTop, width = sidebar.offsetWidth, height = sidebar.offsetHeight;
+  const near = event.clientX >= left && event.clientX <= left + width && event.clientY >= top && event.clientY <= top + height;
+  if (!near || event.target.closest?.('.side-toggle-wrap,#sidebar-toggle') || sidebar.classList.contains('is-animating')) return aimSideTilt(null);
+  const clamp = v => Math.max(0, Math.min(1, v));
+  aimSideTilt(clamp((event.clientX - left) / width) - .5, clamp((event.clientY - top) / height) - .5);
+}, { passive: true });
+document.addEventListener('pointerleave', () => aimSideTilt(null));
+if (new URLSearchParams(location.search).get('demo') === 'sidebar') {
+  // Demo: sweep the tilt like a cursor moving over the panel (for screenshots/recordings).
+  [[-.4,-.4],[.4,-.35],[.45,.1],[.2,.4],[-.35,.35],[0,0]].forEach(([x, y], i) => setTimeout(() => aimSideTilt(x, y), 1400 + i * 450));
+}
+sidebar.addEventListener('pointermove', event => {
+  if (event.pointerType === 'touch') return;
+  const bounds = sidebar.getBoundingClientRect();
+  sidebar.style.setProperty('--side-pointer-x', `${event.clientX - bounds.left}px`);
+  sidebar.style.setProperty('--side-pointer-y', `${event.clientY - bounds.top}px`);
+  sidebar.style.setProperty('--side-pointer-light', '1');
+  const row = event.target.closest(sidebarRowSelector);
+  if (pointerRow === row) return;
+  pointerRow = row;
+  syncSidebarHighlight();
+});
+sidebar.addEventListener('pointerleave', () => {
+  pointerRow = null;
+  sidebar.style.setProperty('--side-pointer-light', '0');
+  syncSidebarHighlight();
+});
+sidebar.addEventListener('focusin', event => {
+  focusRow = event.target.matches(':focus-visible') ? event.target.closest(sidebarRowSelector) : null;
+  pointerRow = null;
+  syncSidebarHighlight();
+});
+sidebar.addEventListener('focusout', () => {
+  focusRow = null;
+  syncSidebarHighlight();
+});
+
+function runSidebarDemo() {
+  setTimeout(() => {
+    toggleWrap.classList.add('show-tooltip');
+    setTimeout(() => {
+      window.__sidebarDemoT0 = performance.now();
+      setSidebar(true);
+      const rows = [...sideNav.querySelectorAll('.side-row')];
+      rows.forEach((row, index) => {
+        setTimeout(() => {
+          demoRow = row;
+          const bounds = row.getBoundingClientRect();
+          const viewport = sideNav.getBoundingClientRect();
+          if (bounds.top < viewport.top) sideNav.scrollTop -= viewport.top - bounds.top;
+          else if (bounds.bottom > viewport.bottom) sideNav.scrollTop += bounds.bottom - viewport.bottom;
+          syncSidebarHighlight();
+        }, 200 + index * 400);
+      });
+    }, 500);
+  }, 500);
+}
+
+function dismissSidebar(event) {
+  // composedPath(): the toggle swaps its icon on click, so event.target can be a detached <path> by the time this runs.
+  if (!sidebar.classList.contains('is-open') || event.composedPath().some(node => node === sidebar || node.tagName === 'DIALOG')) return;
+  setSidebar(false);
+}
+document.addEventListener('click', dismissSidebar);
+document.addEventListener('focusin', dismissSidebar);
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape' || document.querySelector('dialog[open]') || !sidebar.classList.contains('is-open')) return;
+  setSidebar(false);
+  sidebarToggle.focus();
+});
+
+const photoDim = $('photo-dim');
+photoDim.addEventListener('click', () => {
+  const dimmed = document.body.classList.toggle('photo-dimmed');
+  photoDim.setAttribute('aria-pressed', String(dimmed));
+});
+
+function startScenery() {
+  // Background is a CSS gradient (#scenery-base); nothing to rotate.
+}
+
+
+// Engine + app-server addresses come from /config.js (served by server/vi_server.py from VI_ENGINE_PORT / VI_SERVER_PORT).
+const CF = (window.VI_CONFIG && window.VI_CONFIG.engine) || 'http://127.0.0.1:8870';
+const APP = (window.VI_CONFIG && window.VI_CONFIG.server) || (location.protocol.startsWith('http') ? '' : 'http://127.0.0.1:8885');
+const activeJob = job => ['queued', 'running'].includes(job.status);
+const producedClip = clip => ['rendered', 'approved', 'exported', 'rendering'].includes(clip.status) && Boolean(clip.video_url);
+const key = value => encodeURIComponent(value);
+const node = (tag, className, value) => {
+  const el = document.createElement(tag);
+  if (className) el.className = className;
+  if (value != null) el.textContent = value;
+  return el;
+};
+const list = (data, name) => Array.isArray(data) ? data : data?.[name] || [];
+const compact = new Intl.NumberFormat('en', {notation:'compact', maximumFractionDigits:1});
+const number = value => value == null ? '—' : compact.format(value);
+const duration = value => {
+  if (value == null || !Number.isFinite(Number(value))) return '';
+  const seconds = Math.max(0, Math.round(value));
+  return Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0');
+};
+const relative = new Intl.RelativeTimeFormat('en', {numeric:'auto'});
+function relativeTime(value) {
+  if (!value) return '';
+  const minutes = Math.round((new Date(value).getTime() - Date.now()) / 60000);
+  if (!Number.isFinite(minutes)) return '';
+  if (Math.abs(minutes) >= 1440) return relative.format(Math.round(minutes / 1440), 'day');
+  if (Math.abs(minutes) >= 60) return relative.format(Math.round(minutes / 60), 'hour');
+  return minutes === 0 ? 'just now' : relative.format(minutes, 'minute');
+}
+function safeLink(value, base) {
+  if (!value) return '';
+  try {
+    const url = new URL(value, base);
+    if (['http:', 'https:'].includes(url.protocol) && (!base || url.origin === base)) return url.href;
+  } catch {}
+  return '';
+}
+function photo(url, fallback, alt = '') {
+  const missing = () => node('div', 'missing-media', fallback);
+  if (!url) return missing();
+  const img = node('img');
+  img.src = url;
+  img.alt = alt;
+  img.loading = 'lazy';
+  img.addEventListener('error', () => img.replaceWith(missing()), {once:true});
+  return img;
+}
+function button(label, action, style = 'ghost') {
+  const el = node('button', 'btn ' + style, label);
+  el.type = 'button';
+  el.dataset.action = action;
+  return el;
+}
+function externalLink(label, url, className) {
+  const link = node('a', className, label);
+  link.href = url;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  return link;
+}
+function empty(message) {
+  return node('div', 'panel house-empty', message);
+}
+
+async function api(base, path, options = {}) {
+  const {json, timeout: _t, ...request} = options;
+  if (json !== undefined) {
+    request.headers = {...request.headers, 'Content-Type':'application/json'};
+    request.body = JSON.stringify(json);
+  }
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), options.timeout || 8000);
+  try {
+    const response = await fetch(base + path, {cache:'no-store', ...request, signal:controller.signal});
+    const body = await response.text();
+    let result;
+    try { result = JSON.parse(body); } catch { result = body; }
+    if (!response.ok) {
+      const message = [result?.error, result?.detail].filter(Boolean).join(' · ');
+      const error = new Error(message || (body && !body.trimStart().startsWith('<') ? body : 'HTTP ' + response.status));
+      error.httpStatus = response.status;
+      throw error;
+    }
+    return result;
+  } catch (error) {
+    if (controller.signal.aborted) throw new Error('The request timed out.');
+    throw error;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+let toastTimer;
+let toastTarget;
+function notify(message) {
+  if (toastTarget) toastTarget.hidden = true;
+  const dialog = document.querySelector('dialog[open]');
+  let target = $('toast');
+  if (dialog) {
+    target = dialog.querySelector('.dialog-notice') || node('p', 'dialog-notice');
+    target.setAttribute('role', 'status');
+    dialog.append(target);
+  }
+  toastTarget = target;
+  target.textContent = message;
+  target.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { target.hidden = true; }, 6500);
+}
+function openDialog(id) {
+  all('dialog[open]').forEach(dialog => { if (dialog.id !== id) dialog.close(); });
+  if (!$(id).open) {
+    const notice = $(id).querySelector('.dialog-notice');
+    if (notice) notice.hidden = true;
+    $(id).showModal();
+  }
+}
+function details(title, message) {
+  $('detail-title').textContent = title;
+  $('detail-body').replaceChildren(node('p', 'muted', message));
+  openDialog('details-dialog');
+}
+function renderFilters(id, labels, current, select) {
+  const container = $(id);
+  if (!container.childElementCount) {
+    Object.entries(labels).forEach(([value, label]) => {
+      const item = button(label, 'filter');
+      item.dataset.value = value;
+      item.addEventListener('click', () => select(value));
+      container.append(item);
+    });
+  }
+  [...container.children].forEach(item => item.setAttribute('aria-pressed', String(item.dataset.value === current)));
+}
+
+const houseNames = {content:'Content House', research:'Research House', knowledge:'Knowledge House'};
+let house;
+function route() {
+  const hash = location.hash.slice(1);
+  const alias = queries.get('house');
+  house = Object.hasOwn(houseNames, hash) ? hash : !hash && ['research','knowledge'].includes(alias) ? alias : 'content';
+  Object.keys(houseNames).forEach(id => { $(id).hidden = id !== house; });
+  all('[data-route]').forEach(item => {
+    if (item.dataset.route === house) item.setAttribute('aria-current', 'page');
+    else item.removeAttribute('aria-current');
+  });
+  document.title = houseNames[house] + ' | VI Clips';
+  topNav.dataset.active = house;
+  syncSidebarHighlight();
+  if (house !== 'content' && !document.hidden) loadHouse(house);
+}
+function goTo(id) {
+  if (location.hash === '#' + id) return;
+  location.hash = id;
+}
+
+let engineOnline;
+let jobs = [];
+let clips = [];
+const sources = new Map();
+const pendingSources = new Map();
+let clipFilter = 'all';
+let trackedJob;
+let trackedClips = [];
+let minimized = false;
+
+function loadSource(id) {
+  if (sources.has(id) || pendingSources.has(id)) return;
+  pendingSources.set(id, api(CF, '/api/sources/' + key(id))
+    .then(source => {
+      sources.set(id, source);
+      renderJobs();
+      if (trackedJob?.source_id === id) renderExtraction();
+    })
+    .catch(error => { if (error.httpStatus) notify(error.message); })
+    .finally(() => pendingSources.delete(id)));
+}
+
+const stageLabels = {
+  verify:'Getting the video', probe:'Getting the video', extract_audio:'Listening', transcribe:'Listening',
+  signals:'Finding the moments', detect:'Finding the moments', score:'Scoring', dedupe:'Scoring',
+  render:'Cutting your clips', qc:'Checking'
+};
+function currentStage(job) {
+  return (job.stages || []).find(stage => stage.name === job.current_stage)
+    || (job.stages || []).find(stage => stage.status === 'running');
+}
+function stageLabel(job) {
+  return stageLabels[currentStage(job)?.name || job.current_stage] || (job.status === 'queued' ? 'Queued' : 'Starting');
+}
+function paintProgress(bar, value) {
+  bar.removeAttribute('aria-valuenow');
+  bar.firstElementChild.style.transform = 'scaleX(0)';
+  if (value == null || !Number.isFinite(Number(value))) return;
+  const progress = Math.max(0, Math.min(1, Number(value)));
+  bar.setAttribute('aria-valuenow', String(Math.round(progress * 100)));
+  bar.firstElementChild.style.transform = 'scaleX(' + progress + ')';
+}
+function makeProgress(value) {
+  const bar = node('div', 'progress');
+  bar.setAttribute('role', 'progressbar');
+  bar.setAttribute('aria-label', 'Current stage progress');
+  bar.append(node('div'));
+  paintProgress(bar, value);
+  return bar;
+}
+function renderEngine() {
+  const cutting = jobs.filter(job => activeJob(job) && (currentStage(job)?.name || job.current_stage) === 'render').length;
+  const message = engineOnline === undefined ? 'Checking engine' : engineOnline ? 'Engine on · ' + cutting + ' cutting' : 'Engine off — run ./start.sh';
+  $('engine-copy').textContent = message;
+  $('engine-status').title = message;
+  $('engine-status').dataset.online = String(Boolean(engineOnline));
+}
+function liveCard(sess) {
+  const card = node('div', 'panel job-card live-card');
+  const art = node('div', 'job-art live-art');
+  const vid = (sess.url.match(/[?&]v=([\w-]{11})/) || [])[1] || sess.id.split('-').slice(0, -1).join('-');
+  art.append(photo('https://i.ytimg.com/vi/' + vid + '/mqdefault.jpg', 'Live'), node('span', 'live-badge', sess.status === 'recording' ? 'LIVE' : 'ENDED'));
+  const copy = node('div', 'job-copy');
+  const mins = Math.floor((sess.recorded_s || 0) / 60), hrs = Math.floor(mins / 60);
+  const rec = (hrs ? hrs + 'h ' : '') + (mins % 60) + 'm recorded';
+  const sent = (sess.chunks || []).length;
+  copy.append(node('strong', '', (sess.channel ? sess.channel + ' · ' : '') + (sess.title || 'Live stream').replace(/^[^\w]+/, '').replace(/\s*\d{4}-\d{2}-\d{2}.*$/, '').replace(/\s+(GET IN HERE|LIVE)!?$/i, '').slice(0, 48)),
+    node('small', '', [sess.status === 'recording' ? 'Watching live' : 'Stream ended', rec, sent ? sent + (sent === 1 ? ' part' : ' parts') + ' clipping' : 'first part at 10m'].join(' · ')));
+  card.append(art, copy);
+  if (sess.status === 'recording') {
+    const stopBtn = node('button', 'btn act act-glass live-stop', 'Stop');
+    stopBtn.type = 'button';
+    stopBtn.addEventListener('click', async () => { stopBtn.disabled = true; try { await api(APP, '/api/live/stop', {method:'POST', json:{id:sess.id}}); } catch {} refreshLive(); });
+    card.append(stopBtn);
+  }
+  return card;
+}
+function renderJobs() {
+  const running = jobs.filter(activeJob);
+  const lives = liveSessions.filter(x => x.status !== 'ended' || Date.now() - Date.parse(x.ended_at || 0) < 3600e3);
+  $('working').hidden = !running.length && !lives.length;
+  $('jobs').replaceChildren(...lives.map(liveCard), ...running.map(job => {
+    const source = sources.get(job.source_id);
+    const card = node('button', 'panel job-card');
+    card.type = 'button';
+    card.addEventListener('click', () => trackJob(job));
+    const art = node('div', 'job-art');
+    art.append(photo(safeLink(source?.thumb_url, CF), 'No preview'));
+    const copy = node('div', 'job-copy');
+    const time = relativeTime(job.created_at);
+    copy.append(node('strong', '', cleanTitle(source?.title || job.source_title || 'Video')),
+      node('small', '', [stageLabel(job), time].filter(Boolean).join(' · ')), makeProgress(currentStage(job)?.progress));
+    card.append(art, copy);
+    return card;
+  }));
+}
+function visibleClips() {
+  const status = {ready:'rendered', approved:'approved', exported:'exported'}[clipFilter];
+  return clips.filter(clip => producedClip(clip) && (!status || clip.status === status));
+}
+function renderClips() {
+  renderFilters('clip-filters', {all:'All', ready:'Ready', approved:'Approved', exported:'Exported'}, clipFilter, value => {
+    clipFilter = value;
+    renderClips();
+  });
+  const rows = visibleClips();
+  const coming = clipFilter === 'all' || clipFilter === 'ready' ? jobs.filter(activeJob) : [];
+  if (!rows.length && !coming.length) {
+    $('clips').replaceChildren(empty(clipFilter === 'all' ? 'No clips yet — paste a long video above' : 'No ' + clipFilter + ' clips yet'));
+    return;
+  }
+  const grid = node('div', 'clip-grid');
+  coming.forEach(job => {  // shadow cards: clips still being made
+    const n = Math.max(1, Math.min(4, (job.settings?.max_clips || 1)));
+    for (let i = 0; i < (((currentStage(job)?.name || job.current_stage) === 'render') ? n : 1); i++) {
+      const card = node('div', 'panel clip-card shadow-clip');
+      const art = node('div', 'clip-art');
+      art.append(node('span', 'shadow-label', stageLabel(job) || 'Queued'));
+      const copy = node('div', 'clip-copy');
+      const st = node('small'); st.append(node('i', 'status-dot rendering'), 'More clips coming');
+      copy.append(node('strong', 'clip-name', (job.source_title || 'New video').slice(0, 60)), st);
+      card.append(art, copy);
+      grid.append(card);
+    }
+  });
+  rows.forEach(clip => {
+    const card = node('button', 'panel clip-card');
+    card.type = 'button';
+    card.addEventListener('click', () => openClip(clip, rows));
+    const art = node('div', 'clip-art');
+    const overlay = node('div', 'clip-overlay');
+    overlay.append(node('span', 'chip media-chip', duration(clip.duration)));
+    if (clip.overall != null) overlay.append(node('span', 'chip media-chip score', score10(clip.overall)));
+    art.append(clip.video_url ? photo(safeLink(clip.thumb_url, CF), 'Preview missing') : photo('', 'File missing'), overlay);
+    const copy = node('div', 'clip-copy');
+    const status = node('small');
+    status.append(node('i', 'status-dot ' + clip.status), {rendered:'Ready', approved:'Approved', exported:'Exported', rendering:'Re-cutting…'}[clip.status]);
+    copy.append(node('strong', 'clip-name', clip.title || 'Untitled clip'), status);
+    card.append(art, copy);
+    grid.append(card);
+  });
+  $('clips').replaceChildren(grid);
+}
+function renderExtraction() {
+  if (!trackedJob) return;
+  const job = trackedJob;
+  const stage = currentStage(job);
+  const stageName = stage?.name || job.current_stage;
+  const done = job.status === 'done';
+  const failed = ['failed','cancelled'].includes(job.status);
+  const rendering = stageName === 'render' && !done && !failed;
+  const ready = trackedClips.filter(producedClip);
+  const cut = ready.length + trackedClips.filter(clip => clip.status === 'failed').length;
+  const label = done ? ready.length + (ready.length === 1 ? ' clip ready.' : ' clips ready.') : failed ? (job.status === 'failed' ? 'Job failed' : 'Job cancelled') : stageLabel(job);
+  const title = $('extract-title');
+  if (rendering) title.replaceChildren('Cutting your ', node('span', 'accent', 'clips'));
+  else title.textContent = label;
+  $('extract-status').textContent = '● ' + (done ? 'Ready' : failed ? label : 'Extracting');
+  $('extract-sub').textContent = failed ? (job.error || stage?.detail || '') : done ? '' : stage?.detail || '';
+  $('extract-counter').hidden = !rendering;
+  $('count').textContent = cut;
+  $('count-total').textContent = '/' + trackedClips.length;
+  $('extract-progress').hidden = failed;
+  paintProgress($('extract-progress'), done ? 1 : stage?.progress);
+  $('extract-source').textContent = sources.get(job.source_id)?.title || job.source_title || 'Video';
+  $('ready-actions').hidden = !done && !failed;
+  $('keep-working').hidden = done || failed;
+  const steps = [['verify','probe'], ['extract_audio','transcribe'], ['signals','detect','score','dedupe'], ['render','qc']];
+  const phase = steps.findIndex(names => names.includes(stageName));
+  all('#extract-dialog .steps i').forEach((step, i) => step.classList.toggle('on', done || i <= phase));
+  const thumbnails = ready.filter(clip => safeLink(clip.thumb_url, CF));
+  const strip = thumbnails.length ? thumbnails.slice(0, 12).map(clip => photo(safeLink(clip.thumb_url, CF), '')) : [];
+  const sourceThumb = safeLink(sources.get(job.source_id)?.thumb_url, CF);
+  if (!strip.length && sourceThumb) strip.push(photo(sourceThumb, ''));
+  $('extract-film').replaceChildren(...strip);
+  $('clip-wall').replaceChildren(...(done ? ready : trackedClips).map(clip => {
+    const url = producedClip(clip) && safeLink(clip.thumb_url, CF);
+    return url ? photo(url, '') : node('div', 'wall-slot ' + (clip.status === 'failed' ? 'failed' : ''));
+  }));
+  $('mini').textContent = rendering ? label + ' ' + cut + '/' + trackedClips.length : label;
+  $('mini').hidden = !minimized;
+}
+async function refreshTracked() {
+  if (!trackedJob) return;
+  const id = trackedJob.id;
+  try {
+    const current = jobs.find(job => job.id === id) || await api(CF, '/api/jobs/' + key(id));
+    const rows = await api(CF, '/api/clips?job_id=' + key(id) + '&status=all&sort=old');
+    if (trackedJob?.id !== id) return;
+    trackedJob = current;
+    trackedClips = list(rows, 'clips');
+    renderExtraction();
+  } catch (error) {
+    if (trackedJob?.id === id) $('extract-sub').textContent = error.message;
+  }
+}
+function trackJob(job) {
+  if (trackedJob?.id !== job.id) trackedClips = [];
+  trackedJob = job;
+  minimized = false;
+  loadSource(job.source_id);
+  renderExtraction();
+  openDialog('extract-dialog');
+  refreshTracked();
+}
+function minimize() {
+  minimized = true;
+  $('extract-dialog').close();
+  renderExtraction();
+}
+
+let cfRequest;
+let cfAgain = false;
+let cfTimer;
+let cfDebounce;
+let stream;
+let streamOnline = false;
+function refreshCF() {
+  if (document.hidden) return Promise.resolve();
+  if (cfRequest) {
+    cfAgain = true;
+    return cfRequest;
+  }
+  cfRequest = (async () => {
+    try {
+      const ping = await api(CF, '/api/ping');
+      engineOnline = ping?.ok === true;
+    } catch {
+      engineOnline = false;
+    }
+    renderEngine();
+    if (!engineOnline) {
+      if (trackedJob && activeJob(trackedJob)) $('extract-sub').textContent = 'Engine off — run ./start.sh';
+      return;
+    }
+    const results = await Promise.allSettled([
+      api(CF, '/api/jobs'), api(CF, '/api/clips?status=all&sort=new')
+    ]);
+    const [jobResult, clipResult] = results;
+    if (jobResult.status === 'fulfilled') {
+      jobs = list(jobResult.value, 'jobs');
+      renderJobs();
+      renderEngine();
+      jobs.filter(activeJob).forEach(job => loadSource(job.source_id));
+    }
+    if (clipResult.status === 'fulfilled') {
+      clips = list(clipResult.value, 'clips');
+      renderClips();
+    }
+    results.forEach(result => { if (result.status === 'rejected') notify(result.reason.message); });
+    await refreshTracked();
+  })().finally(() => {
+    cfRequest = null;
+    if (cfAgain) {
+      cfAgain = false;
+      scheduleCF();
+    }
+  });
+  return cfRequest;
+}
+function scheduleCF() {
+  clearTimeout(cfDebounce);
+  if (!document.hidden) cfDebounce = setTimeout(refreshCF, 400);
+}
+function connectCF() {
+  if (document.hidden) return;
+  if (!stream && 'EventSource' in window) {
+    stream = new EventSource(CF + '/api/stream');
+    stream.onopen = () => { streamOnline = true; scheduleCF(); };
+    stream.onerror = () => { if (streamOnline) scheduleCF(); streamOnline = false; };
+    const receive = event => {
+      try {
+        const message = JSON.parse(event.data);
+        if (['job','clip','source','event'].includes(message.type)) scheduleCF();
+      } catch {}
+    };
+    ['message','job','clip','source','event'].forEach(type => stream.addEventListener(type, receive));
+  }
+  clearInterval(cfTimer);
+  cfTimer = setInterval(() => { if (!streamOnline) refreshCF(); }, 5000);
+  refreshLive(); setInterval(() => { if (!document.hidden) refreshLive(); }, 10000);
+  refreshCF();
+}
+
+let selectedFiles = [];
+let importing = false;
+function importMessage(message) {
+  $('import-error').textContent = message;
+  $('import-error').hidden = !message;
+  $('import-error').classList.toggle('muted', importing);
+}
+function selectFiles(files) {
+  selectedFiles = [...files];
+  $('selected-files').textContent = selectedFiles.length === 1 ? selectedFiles[0].name : selectedFiles.length ? selectedFiles.length + ' files selected' : '';
+  document.querySelector('[data-action=import-files]').hidden = !selectedFiles.length;
+}
+function showImport(url = '', files = [], autoSubmit = false) {
+  if (importing) return;
+  $('import-url').value = url;
+  selectFiles(files);
+  importMessage('');
+  openDialog('import-dialog');
+  if (autoSubmit) $('import-form').requestSubmit();
+}
+async function importCreator() {
+  let saved;
+  try { saved = localStorage.getItem('vi-import-creator'); } catch {}
+  const creators = list(await api(CF, '/api/creators'), 'creators');
+  const uploads = creators.filter(creator => creator.name === 'My uploads' && creator.rights_status === 'owned');
+  const creator = uploads.find(item => String(item.id) === saved) || uploads[0] ||
+    await api(CF, '/api/creators', {method:'POST', json:{name:'My uploads', rights_status:'owned'}});
+  try { localStorage.setItem('vi-import-creator', String(creator.id)); } catch {}
+  return creator.id;
+}
+let liveSessions = [];
+async function refreshLive() {
+  try { liveSessions = await api(APP, '/api/live'); } catch { liveSessions = []; }
+  renderJobs();
+}
+async function startImport(url) {
+  if (importing) return;
+  if (url) {
+    importMessage('Checking the link…');
+    try {
+      const r = await api(APP, '/api/live/start', {method:'POST', json:{url}, timeout:120000});
+      if (r && r.live) {
+        $('import-dialog').close?.();
+        toast('Watching live: ' + (r.session?.channel || 'stream') + '. First clips in about 10 minutes.');
+        await refreshLive();
+        return;
+      }
+    } catch (error) {
+      if (/live|stream|bot|sign in/i.test(error.message || '')) { importMessage('Live clip failed: ' + error.message); return; }
+    }
+  }
+  const files = selectedFiles;
+  if (!url && !files.length) return;
+  importing = true;
+  const controls = all('#import-dialog button, #import-url');
+  controls.forEach(control => { control.disabled = true; });
+  importMessage(url ? 'Getting the video…' : 'Uploading video…');
+  const failures = [];
+  let firstJob;
+  try {
+    const creatorId = await importCreator();
+    for (const file of url ? [null] : files) {
+      try {
+        const source = file
+          ? await api(CF, '/api/sources/upload', {method:'POST', body:file, timeout:900000, headers:{'X-Filename':key(file.name), 'X-Creator-Id':String(creatorId)}})
+          : await api(CF, '/api/sources/url', {method:'POST', json:{url, creator_id:creatorId}, timeout:900000});
+        sources.set(source.id, source);
+        const job = await api(CF, '/api/jobs', {method:'POST', json:{source_id:source.id, settings:{target:'auto'}}});
+        firstJob ||= job;
+        selectFiles(selectedFiles.filter(item => item !== file));
+      } catch (error) {
+        failures.push((file ? file.name + ' · ' : '') + error.message);
+      }
+    }
+  } catch (error) {
+    failures.push(error.message);
+  } finally {
+    controls.forEach(control => { control.disabled = false; });
+    importing = false;
+  }
+  if (firstJob) {
+    $('hero-url').value = '';
+    trackJob(firstJob);
+    refreshCF();
+  }
+  if (failures.length) {
+    if (firstJob) notify(failures.join(' · '));
+    else importMessage(failures.join(' · '));
+  }
+}
+
+let currentClip;
+let viewerClips = [];
+let clipBusy = false;
+function updateClipControls() {
+  const index = viewerClips.indexOf(currentClip.id);
+  const rules = {approve:currentClip.status === 'approved', reject:currentClip.status === 'rejected',
+    export:!currentClip.video_url, prev:index <= 0, next:index < 0 || index >= viewerClips.length - 1};
+  const counter = $('clip-count'); if (counter) counter.textContent = index >= 0 ? (index + 1) + ' of ' + viewerClips.length : '';
+  Object.entries(rules).forEach(([action, disabled]) => {
+    const el = document.querySelector('#clip-dialog [data-action=' + action + ']'); if (el) el.disabled = clipBusy || disabled;
+  });
+}
+let clipPlayback;
+function clearClipPlayer() {
+  clipPlayback?.dispose();
+  clipPlayback = undefined;
+  const player = $('clip-player');
+  delete player.dataset.controls;
+  player.style.removeProperty('--clip-progress');
+  player.replaceChildren();
+}
+function mountClipPlayer(player, clip, url) {
+  const video = node('video');
+  video.playsInline = true;
+  video.defaultMuted = true;
+  video.muted = true;
+  video.loop = true;
+  video.preload = 'metadata';
+  video.poster = safeLink(clip.thumb_url, CF);
+
+  const overlay = node('div', 'clip-overlay-controls');
+  const bar = node('div', 'clip-media-bar');
+  const row = node('div', 'clip-media-row');
+  const time = node('span', 'clip-media-time');
+  const scrubber = node('input', 'clip-scrubber');
+  scrubber.type = 'range';
+  scrubber.min = 0;
+  scrubber.max = 1;
+  scrubber.step = 'any';
+  scrubber.value = 0;
+  scrubber.setAttribute('aria-label', 'Seek');
+  const playButton = node('button', 'clip-media-button clip-media-toggle');
+  const muteButton = node('button', 'clip-media-button');
+  const fullscreenButton = node('button', 'clip-media-button');
+  for (const button of [playButton, muteButton, fullscreenButton]) button.type = 'button';
+
+  const events = new AbortController();
+  const listen = (target, type, handler) => target.addEventListener(type, handler, {signal:events.signal});
+  let fadeTimer;
+  let audioChosen = false;
+  const labelButton = (button, label, path) => {
+    button.setAttribute('aria-label', label);
+    button.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg>`;
+  };
+  function showControls() {
+    clearTimeout(fadeTimer);
+    player.dataset.controls = 'visible';
+    if (!video.paused) fadeTimer = setTimeout(hideControls, 1800);
+  }
+  function hideControls() {
+    if (!video.paused) delete player.dataset.controls;
+  }
+  function paintTime() {
+    const total = Number.isFinite(video.duration) ? video.duration : 0;
+    const elapsed = video.currentTime;
+    const progress = total > 0 ? Math.min(1, elapsed / total) : 0;
+    scrubber.disabled = total <= 0;
+    scrubber.value = progress;
+    const elapsedText = duration(Math.floor(elapsed));
+    const totalText = duration(total || clip.duration) || '0:00';
+    time.textContent = elapsedText + ' / ' + totalText;
+    scrubber.setAttribute('aria-valuetext', elapsedText + ' of ' + totalText);
+    player.style.setProperty('--clip-progress', (progress * 100) + '%');
+  }
+  function paintPlayback() {
+    labelButton(playButton, video.paused ? 'Play' : 'Pause', video.paused ? 'm8 5 11 7-11 7z' : 'M9 5v14m6-14v14');
+    showControls();
+  }
+  function paintMute() {
+    const speaker = 'M4 9h4l4-4v14l-4-4H4z';
+    labelButton(muteButton, video.muted ? 'Unmute' : 'Mute', speaker + (video.muted
+      ? 'M16 9l5 6m0-6-5 6' : 'M16 9a5 5 0 0 1 0 6m2.5-8.5a8 8 0 0 1 0 11'));
+  }
+  function paintFullscreen() {
+    const fullscreen = document.fullscreenElement === player;
+    labelButton(fullscreenButton, fullscreen ? 'Exit fullscreen' : 'Fullscreen', fullscreen
+      ? 'M4 9h5V4m11 5h-5V4M4 15h5v5m11-5h-5v5'
+      : 'M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5');
+  }
+  function play() {
+    video.play().catch(() => {
+      if (!events.signal.aborted) paintPlayback();
+    });
+  }
+  function togglePlay() {
+    if (video.paused) play();
+    else video.pause();
+  }
+  function toggleMute() {
+    audioChosen = true;
+    video.muted = !video.muted;
+    showControls();
+  }
+  async function toggleFullscreen() {
+    showControls();
+    try {
+      if (document.fullscreenElement === player) await document.exitFullscreen();
+      else if (player.requestFullscreen) await player.requestFullscreen();
+      else video.webkitEnterFullscreen?.();
+    } catch {
+      showControls();
+    }
+  }
+
+  listen(player, 'pointermove', showControls);
+  listen(player, 'pointerleave', hideControls);
+  listen(player, 'click', event => {
+    if (!audioChosen && !muteButton.contains(event.target)) {
+      audioChosen = true;
+      video.muted = false;
+      if (event.target === video && video.paused) play();
+      showControls();
+    } else if (event.target === video) {
+      togglePlay();
+    }
+  });
+  listen(playButton, 'click', togglePlay);
+  listen(muteButton, 'click', toggleMute);
+  listen(fullscreenButton, 'click', toggleFullscreen);
+  listen(scrubber, 'input', () => {
+    video.currentTime = Number(scrubber.value) * video.duration;
+    paintTime();
+    showControls();
+  });
+  for (const event of ['timeupdate', 'durationchange', 'seeking']) listen(video, event, paintTime);
+  for (const event of ['play', 'pause', 'ended']) listen(video, event, paintPlayback);
+  listen(video, 'volumechange', paintMute);
+  listen(document, 'fullscreenchange', paintFullscreen);
+  listen(video, 'error', () => {
+    clearClipPlayer();
+    player.append(node('div', 'missing-media', 'File missing or unavailable'));
+  });
+
+  row.append(time, muteButton, fullscreenButton);
+  bar.append(scrubber, row);
+  overlay.append(playButton, bar);
+  player.append(video, overlay, node('div', 'clip-edge-progress'));
+  paintTime();
+  paintPlayback();
+  paintMute();
+  paintFullscreen();
+  video.src = url;
+
+  return {
+    play, togglePlay, toggleMute, toggleFullscreen,
+    dispose() {
+      events.abort();
+      clearTimeout(fadeTimer);
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    }
+  };
+}
+function clipDetail(label, text, className) {
+  const section = node('div', 'clip-detail-section');
+  section.append(node('div', 'clip-detail-label', label), node('p', className, text));
+  return section;
+}
+function openClip(clip, rows) {
+  if (rows) viewerClips = rows.map(item => item.id);
+  currentClip = clip;
+  const url = safeLink(clip.video_url, CF) && (safeLink(clip.video_url, CF) + (clip.video_url.includes('?') ? '&' : '?') + 'v=' + encodeURIComponent(clip.updated_at || clip.render_sig || ''));
+  const player = $('clip-player');
+  const changed = player.dataset.clip !== String(clip.id) || player.dataset.url !== url || !player.childElementCount || !$('clip-dialog').open;
+  if (changed) {
+    clearClipPlayer();
+    player.dataset.clip = String(clip.id);
+    player.dataset.url = url;
+    if (url) clipPlayback = mountClipPlayer(player, clip, url);
+    else player.append(node('div', 'missing-media', 'File missing'));
+  }
+  $('clip-title').textContent = clip.title || 'Untitled clip';
+  const meta = $('clip-meta');
+  meta.replaceChildren();
+  const length = duration(clip.duration);
+  if (length) meta.append(node('span', 'clip-meta-chip', length));
+  if (clip.overall != null) meta.append(node('span', 'clip-meta-chip clip-meta-score', score10(clip.overall) + '/10'));
+  if (clip.category) meta.append(node('span', 'clip-meta-chip', clip.category[0].toUpperCase() + clip.category.slice(1)));
+  const details = $('clip-details');
+  details.replaceChildren();
+  if (clip.hook) details.append(clipDetail('Hook', clip.hook, 'clip-hook'));
+  if (clip.description) details.append(clipDetail('Why it works', clip.description));
+  const source = [clip.source_title, clip.creator_name].filter(Boolean).join(' · ');
+  if (source) {
+    const credit = node('div', 'clip-credit');
+    credit.innerHTML = icon('video');
+    credit.append(node('span', '', source));
+    details.append(credit);
+  }
+  updateClipControls();
+  renderRateRow();
+  openDialog('clip-dialog');
+  if (changed) clipPlayback?.play();
+}
+function stepClip(offset) {
+  if (clipBusy) return;
+  const id = viewerClips[viewerClips.indexOf(currentClip.id) + offset];
+  const clip = clips.find(row => row.id === id);
+  if (clip) openClip(clip);
+}
+async function changeClip(action) {
+  if (!currentClip || clipBusy) return;
+  const id = currentClip.id;
+  clipBusy = true;
+  updateClipControls();
+  try {
+    if (action === 'export') {
+      const result = await api(APP, '/api/reveal', {method:'POST', json:{clip_id:id, title:currentClip.title}});
+      notify('Saved. Showing it in Finder.');
+    } else {
+      const status = action === 'approve' ? 'approved' : 'rejected';
+      const updated = await api(CF, '/api/clips/' + key(id), {method:'PATCH', json:{status}});
+      clips = clips.map(clip => clip.id === id ? {...clip, ...updated, status} : clip);
+      currentClip = {...currentClip, ...updated, status};
+      renderClips();
+      if (action === 'approve') celebrateApprove(id);
+    }
+    refreshCF();
+  } catch (error) {
+    notify(error.message);
+  } finally {
+    clipBusy = false;
+    updateClipControls();
+  }
+}
+
+const researchSorts = {best_x:'Best ×', long_in_last_12:'Most active', subs:'Biggest'};
+const categories = {all:'All', hook:'Hook', retention:'Retention', editing:'Editing', captions:'Captions', format:'Format', picking:'Picking', distribution:'Distribution'};
+const confidenceLabels = {proven:'Proven', research:'Research', starter:'Starter', 'his-rule':'Creator rule'};
+const sixOffline = 'Run ./start.sh to turn this on';
+const sixHouses = {
+  research:{action:'/api/research/refresh', filter:'best_x'},
+  knowledge:{action:'/api/knowledge/update', filter:'all'}
+};
+const dateValue = value => Date.parse(value) || 0;
+const ytWatch = id => 'https://www.youtube.com/watch?v=' + key(id);
+function channelCard(channel) {
+  const card = node('article', 'panel channel-card');
+  const head = node('header', 'channel-head');
+  const avatar = node('span', 'channel-avatar');
+  avatar.append(photo(safeLink(channel.avatar), channel.name?.trim().charAt(0).toUpperCase() || ''));
+  const identity = node('div');
+  identity.append(node('h2', 'channel-name', channel.name), node('small', '', channel.subs == null ? 'Subscribers unavailable' : number(channel.subs) + ' subscribers'));
+  head.append(avatar, identity);
+  if (channel.niche) head.append(node('span', 'chip', channel.niche));
+  const stats = node('div', 'channel-stats');
+  const ratio = channel.best_x == null ? '—' : Number(channel.best_x).toLocaleString('en', {maximumFractionDigits:1}) + '×';
+  stats.title = 'Best × is views divided by subscribers';
+  [['Median views', number(channel.median_views)], ['Best ×', ratio], ['Long of last 12', number(channel.long_in_last_12)]].forEach(([label, value]) => {
+    const tile = node('div');
+    tile.append(node('strong', '', value), node('small', '', label));
+    stats.append(tile);
+  });
+  const videos = [...(channel.videos || [])].filter(video => video.id).sort((a, b) => dateValue(b.date) - dateValue(a.date)).slice(0, 3);
+  const strip = node('div', 'video-strip');
+  videos.forEach(video => {
+    const link = externalLink('', ytWatch(video.id), 'video-thumb');
+    link.title = video.title || '';
+    link.append(photo('https://i.ytimg.com/vi/' + key(video.id) + '/mqdefault.jpg', 'No preview', video.title || 'YouTube video'));
+    if (video.views != null) link.append(node('span', 'chip media-chip', number(video.views)));
+    strip.append(link);
+  });
+  const actions = node('div', 'house-actions');
+  const channelUrl = safeLink(channel.url);
+  if (channelUrl) actions.append(externalLink('Open channel ↗', channelUrl, 'btn ghost'));
+  if (videos.length) {
+    const latest = button('Clip latest', 'clip-latest', 'cream');
+    latest.dataset.url = ytWatch(videos[0].id);
+    actions.append(latest);
+  }
+  card.append(head, stats);
+  if (videos.length) card.append(strip);
+  if (channel.why) card.append(node('p', 'muted', channel.why));
+  card.append(actions);
+  return card;
+}
+const fmtViewers = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'K' : String(n || 0);
+function renderLiveNow(data) {
+  const rows = (data && data.live) || [];
+  $('live-now-meta').textContent = rows.length ? 'Ranked by people watching · ' + (relativeTime(data.live_updated) || 'now') : '';
+  $('live-now-row').replaceChildren(...(rows.length ? rows.map(r => {
+    const card = node('article', 'panel live-tile');
+    const art = node('div', 'live-tile-art');
+    const img = document.createElement('img'); img.src = 'https://i.ytimg.com/vi/' + r.id + '/mqdefault_live.jpg'; img.alt = ''; img.loading = 'lazy';
+    art.append(img, node('span', 'live-badge', 'LIVE'), node('span', 'live-watch', fmtViewers(r.viewers) + ' watching'));
+    const who = node('div', 'live-who');
+    if (r.avatar) { const a = document.createElement('img'); a.src = r.avatar; a.alt = ''; a.className = 'live-ava'; who.append(a); }
+    who.append(node('strong', '', r.channel));
+    const go = node('button', 'btn cream act live-go', 'Clip this live'); go.type = 'button';
+    go.addEventListener('click', () => { location.hash = '#content'; $('hero-url').value = r.url; $('hero-form').requestSubmit(); });
+    const open = node('a', 'btn act act-glass live-open', 'Watch'); open.href = r.url; open.target = '_blank'; open.rel = 'noopener';
+    const acts = node('div', 'live-acts'); acts.append(go, open);
+    card.append(art, who, node('p', 'live-title', cleanTitle(r.title)), acts);
+    return card;
+  }) : [empty('No GTA 6 streams live right now')]));
+}
+let liveNowAt = 0;
+async function refreshLiveNow() {
+  if (Date.now() - liveNowAt < 60000) return;
+  liveNowAt = Date.now();
+  try { await api(APP, '/api/research/live', {method:'POST', json:{}, timeout:30000}); renderLiveNow(await fetchHouse('research')); } catch {}
+}
+function renderResearch(data, sort) {
+  renderLiveNow(data);
+  refreshLiveNow();
+  const channels = [...list(data.channels, 'channels')].sort((a,b) => (b[sort] ?? -Infinity) - (a[sort] ?? -Infinity));
+  const grid = node('div', 'channel-grid');
+  grid.append(...channels.map(channelCard));
+  $('research-results').replaceChildren(channels.length ? grid : empty('No channels yet'));
+}
+function principleRow(principle) {
+  const row = node('article', 'panel principle');
+  row.append(node('h2', '', principle.title), node('p', '', principle.rule));
+  if (principle.why) row.append(node('p', 'why', principle.why));
+  const meta = node('div', 'principle-meta');
+  const confidence = confidenceLabels[principle.confidence];
+  if (confidence) {
+    const chip = node('span', 'chip confidence ' + principle.confidence);
+    chip.append(node('i'), confidence);
+    meta.append(chip);
+  }
+  const source = safeLink(principle.source?.url);
+  if (principle.source?.label) meta.append(source ? externalLink(principle.source.label, source) : node('small', '', principle.source.label));
+  row.append(meta);
+  return row;
+}
+function renderKnowledge(data, category) {
+  const principles = list(data.principles, 'principles')
+    .filter(item => category === 'all' || item.category === category)
+    .sort((a, b) => dateValue(b.added) - dateValue(a.added));
+  const grid = node('div', 'principle-list');
+  const cutoff = new Date();
+  cutoff.setUTCHours(0, 0, 0, 0);
+  cutoff.setUTCDate(cutoff.getUTCDate() - ((cutoff.getUTCDay() + 6) % 7));
+  if (principles.some(item => dateValue(item.added) >= cutoff.getTime())) {
+    grid.append(node('h3', 'week-divider', 'New this week'));
+  }
+  grid.append(...principles.map(principleRow));
+  $('knowledge-results').replaceChildren(principles.length ? grid : empty('No principles yet'));
+  const log = node('div', 'panel update-log');
+  const fmt = new Intl.DateTimeFormat('en', {month:'short', day:'numeric', timeZone:'UTC'});
+  [...list(data.log, 'log')].sort((a,b) => dateValue(b.date) - dateValue(a.date)).forEach(item => {
+    const date = dateValue(item.date);
+    const added = Array.isArray(item.added) ? item.added.length : item.added;
+    log.append(node('small', '', [date ? fmt.format(date) : '', added != null ? '+' + added + (Number(added) === 1 ? ' principle' : ' principles') : '', item.note].filter(Boolean).join(' · ')));
+  });
+  $('knowledge-log').replaceChildren(...(log.childElementCount ? [log] : []));
+}
+function renderHouse(id) {
+  const state = sixHouses[id];
+  const {data, filter, running, loading, offline, error} = state;
+  const trigger = document.querySelector('[data-action=' + id + '-refresh]');
+  trigger.disabled = Boolean(running || loading || !data && offline);
+  trigger.setAttribute('aria-busy', String(Boolean(running)));
+  const labels = id === 'research' ? researchSorts : categories;
+  renderFilters(id + '-filters', labels, filter, value => {
+    state.filter = value;
+    renderHouse(id);
+  });
+  const updated = relativeTime(data?.updated);
+  const count = id === 'knowledge' && data ? list(data.principles, 'principles').length : null;
+  $(id + '-meta').textContent = [updated ? 'Updated ' + updated : '', count == null ? '' : count + (count === 1 ? ' principle' : ' principles'), error].filter(Boolean).join(' · ');
+  if (!data || offline) {
+    $(id + '-results').replaceChildren(empty(offline ? sixOffline : error || 'Loading…'));
+    if (id === 'knowledge') $('knowledge-log').replaceChildren();
+    return;
+  }
+  if (id === 'research') renderResearch(data, filter);
+  else renderKnowledge(data, filter);
+}
+function fetchHouse(id) {
+  return api(APP, '/data/' + id + '.json');
+}
+let sixTimer;
+let statusRequest;
+function manageSixPoll() {
+  clearTimeout(sixTimer);
+  if (!document.hidden && Object.values(sixHouses).some(state => state.running)) {
+    sixTimer = setTimeout(syncSixStatus, 3000);
+  }
+}
+function syncSixStatus() {
+  if (document.hidden) return Promise.resolve();
+  if (statusRequest) return statusRequest;
+  statusRequest = (async () => {
+    try {
+      const status = await api(APP, '/api/status');
+      await Promise.all(Object.entries(sixHouses).map(async ([id, state]) => {
+        const next = status[id];
+        if (!next || state.starting) return;
+        const finished = (state.running && !next.running) || (state.lastRun && state.lastRun !== next.last_run);
+        state.running = next.running;
+        state.lastRun = next.last_run;
+        state.offline = false;
+        state.error = next.error || '';
+        if (finished) {
+          try { state.data = await fetchHouse(id); }
+          catch (error) { state.error = error.message; }
+        }
+        renderHouse(id);
+      }));
+    } catch (error) {
+      Object.entries(sixHouses).forEach(([id, state]) => {
+        if (!state.starting) {
+          state.offline = !error.httpStatus;
+          if (error.httpStatus) state.error = error.message;
+          if (id === house || state.running) renderHouse(id);
+        }
+      });
+    }
+  })().finally(() => {
+    statusRequest = null;
+    manageSixPoll();
+  });
+  return statusRequest;
+}
+async function loadHouse(id) {
+  const state = sixHouses[id];
+  if (state.loading) return;
+  state.loading = true;
+  renderHouse(id);
+  try {
+    state.data = await fetchHouse(id);
+    state.offline = false;
+    state.error = '';
+  } catch (error) {
+    state.offline = !error.httpStatus;
+    state.error = error.httpStatus ? error.message : '';
+  } finally {
+    state.loading = false;
+    renderHouse(id);
+  }
+  syncSixStatus();
+}
+async function startSixUpdate(id) {
+  const state = sixHouses[id];
+  if (state.running || state.loading) return;
+  state.starting = true;
+  state.running = true;
+  state.error = '';
+  renderHouse(id);
+  try {
+    await api(APP, state.action, {method:'POST'});
+  } catch (error) {
+    state.running = false;
+    state.error = error.message;
+    state.offline = !error.httpStatus;
+    notify(error.message);
+  } finally {
+    state.starting = false;
+    renderHouse(id);
+    manageSixPoll();
+  }
+}
+
+$('hero-form').addEventListener('submit', event => {
+  event.preventDefault();
+  showImport($('hero-url').value.trim(), [], true);
+});
+$('import-form').addEventListener('submit', event => {
+  event.preventDefault();
+  const url = safeLink($('import-url').value.trim());
+  if (!url) importMessage('Enter a valid video link.');
+  else startImport(url);
+});
+['files', 'folder'].forEach(id => $(id).addEventListener('change', event => {
+  const files = [...event.target.files];
+  selectFiles(id === 'folder' ? files.filter(file => file.type.startsWith('video/') || /\.(mp4|mov|mkv|webm|avi|m4v|mts|mxf|wmv)$/i.test(file.name)) : files);
+  if (id === 'folder' && !selectedFiles.length) importMessage('No videos found in this folder.');
+  else importMessage('');
+  event.target.value = '';
+}));
+all('[data-drop]').forEach(zone => {
+  zone.addEventListener('dragover', event => {
+    if (!event.dataTransfer.types.includes('Files')) return;
+    event.preventDefault();
+    zone.classList.add('drag');
+  });
+  zone.addEventListener('dragleave', event => {
+    if (!zone.contains(event.relatedTarget)) zone.classList.remove('drag');
+  });
+  zone.addEventListener('drop', event => {
+    event.preventDefault();
+    zone.classList.remove('drag');
+    if (importing || !event.dataTransfer.files.length) return;
+    if ($('import-dialog').open) selectFiles(event.dataTransfer.files);
+    else showImport('', event.dataTransfer.files);
+  });
+});
+$('import-dialog').addEventListener('cancel', event => {
+  if (importing) event.preventDefault();
+});
+$('extract-dialog').addEventListener('cancel', event => {
+  event.preventDefault();
+  minimize();
+});
+$('clip-dialog').addEventListener('close', () => {
+  if (!$('clip-dialog').open) clearClipPlayer();
+});
+$('clip-dialog').addEventListener('keydown', event => {
+  if (event.altKey || event.ctrlKey || event.metaKey) return;
+  // typing feedback (reject note / edit box) must never trigger player shortcuts or clip stepping
+  if (event.target.closest('textarea, input, [contenteditable]')) return;
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    if (event.target.matches('.clip-scrubber')) return;
+    event.preventDefault();
+    stepClip(event.key === 'ArrowLeft' ? -1 : 1);
+    return;
+  }
+  if (!clipPlayback) return;
+  const shortcut = event.key.toLowerCase();
+  if (![' ', 'm', 'f'].includes(shortcut)) return;
+  if (shortcut === ' ' && event.target.matches('button')) return;
+  const action = {' ':clipPlayback.togglePlay, m:clipPlayback.toggleMute, f:clipPlayback.toggleFullscreen}[shortcut];
+  event.preventDefault();
+  if (!event.repeat) action();
+});
+
+const actions = {
+  import:() => showImport($('hero-url').value),
+  'pick-files':() => $('files').click(),
+  'pick-folder':() => $('folder').click(),
+  'import-files':() => startImport(),
+  close:item => item.closest('dialog').close(),
+  minimize,
+  restore:() => {
+    minimized = false;
+    renderExtraction();
+    openDialog('extract-dialog');
+    refreshTracked();
+  },
+  'open-content':() => {
+    minimized = false;
+    $('mini').hidden = true;
+    $('extract-dialog').close();
+    trackedJob = undefined;
+    clipFilter = 'all';
+    renderClips();
+    goTo('content');
+    requestAnimationFrame(() => $('clips').scrollIntoView({block:'start'}));
+  },
+  approve:() => openApproveSheet(),
+  reject:() => openRejectSheet(),
+  edit:() => openEditSheet(),
+  export:() => changeClip('export'),
+  prev:() => stepClip(-1),
+  next:() => stepClip(1),
+  'research-refresh':() => startSixUpdate('research'),
+  'knowledge-refresh':() => startSixUpdate('knowledge'),
+  'clip-latest':item => {
+    goTo('content');
+    $('hero-url').value = item.dataset.url;
+    requestAnimationFrame(() => $('hero-url').focus());
+  },
+  help:() => details('Help', 'Paste a video link or import a file in Content House. Run ./start.sh in the vi-clips folder to start the local services.'),
+  settings:() => details('Settings', $('engine-copy').textContent),
+  logout:() => details('Log out', 'VI Clips runs locally without an account.')
+};
+document.addEventListener('click', event => {
+  const item = event.target.closest('[data-action], [data-route]');
+  if (!item) return;
+  if (item.dataset.route) goTo(item.dataset.route);
+  else actions[item.dataset.action]?.(item);
+  if (sidebar.contains(item)) setSidebar(false);
+});
+window.addEventListener('hashchange', route);
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    clearInterval(cfTimer);
+    clearTimeout(cfDebounce);
+    clearTimeout(sixTimer);
+    stream?.close();
+    stream = null;
+    streamOnline = false;
+  } else {
+    connectCF();
+    if (house !== 'content') loadHouse(house);
+    else if (Object.values(sixHouses).some(state => state.running)) syncSixStatus();
+  }
+});
+
+$('import-film').append(...['city','play-drift','play-swamp','play-drift','city'].map((name, index) => {
+  const frame = node('span', 'clip-frame');
+  frame.style.backgroundImage = 'linear-gradient(' + (120 + index * 40) + 'deg,#3a2a6b,#c2410c 60%,#0e7490)';
+  return frame;
+}));
+startScenery();
+route();
+renderClips();
+connectCF();
+if (sidebarDemo) {
+  if (document.readyState === 'complete') runSidebarDemo();
+  else window.addEventListener('load', runSidebarDemo, {once:true});
+}
+if (!sidebarDemo && !queries.has('nosplash') && !reducedMotion.matches) {
+  $('splash').hidden = false;
+  setTimeout(() => { $('splash').hidden = true; }, 1200);
+}
+
+
+const REJECT_REASONS = [['weak_hook','Weak hook'],['boring','Boring / slow'],['no_payoff','No payoff'],['needs_context','Confusing'],
+  ['bad_cut','Bad start or end'],['wrong_moment','Wrong moment'],['bad_hook_box','Bad hook text'],['too_long','Too long']];
+function openRejectSheet() {
+  if (!currentClip || clipBusy) return;
+  const sheet = $('reject-sheet');
+  $('reason-chips').replaceChildren(...REJECT_REASONS.map(([id, label]) => {
+    const chip = node('button', 'reason-chip', label); chip.type = 'button'; chip.dataset.reason = id;
+    chip.setAttribute('aria-pressed', 'false');
+    chip.addEventListener('click', () => chip.setAttribute('aria-pressed', String(chip.getAttribute('aria-pressed') !== 'true')));
+    return chip;
+  }));
+  $('reject-note').value = '';
+  sheet.hidden = false;
+  document.querySelector('#clip-dialog .clip-actions').hidden = true;
+}
+function closeRejectSheet() {
+  $('reject-sheet').hidden = true;
+  const acts = document.querySelector('#clip-dialog .clip-actions'); if (acts) acts.hidden = false;
+}
+$('reject-cancel').addEventListener('click', closeRejectSheet);
+$('reject-sheet').addEventListener('submit', async event => {
+  event.preventDefault();
+  if (!currentClip) return;
+  const reasons = all('#reason-chips [aria-pressed=true]').map(chip => chip.dataset.reason);
+  const note = $('reject-note').value.trim();
+  const clip = currentClip;
+  closeRejectSheet();
+  await changeClip('reject');
+  try {
+    await api(APP, '/api/feedback', {method:'POST', json:{clip_id:clip.id, title:clip.title, source:clip.source_title, reasons, note}});
+    notify('Got it. The next clips will avoid this.');
+  } catch { notify('Rejected. Feedback not saved: run ./start.sh.'); }
+});
+
+const LIKE_REASONS = [['great_hook','Great hook'],['funny','Funny'],['big_payoff','Big payoff'],['clean_cut','Clean cut'],
+  ['good_hook_text','Good hook text'],['right_length','Right length']];
+function openApproveSheet() {
+  if (!currentClip || clipBusy) return;
+  $('like-chips').replaceChildren(...LIKE_REASONS.map(([id, label]) => {
+    const chip = node('button', 'reason-chip', label); chip.type = 'button'; chip.dataset.reason = id;
+    chip.setAttribute('aria-pressed', 'false');
+    chip.addEventListener('click', () => chip.setAttribute('aria-pressed', String(chip.getAttribute('aria-pressed') !== 'true')));
+    return chip;
+  }));
+  $('approve-note').value = '';
+  $('reject-sheet').hidden = true; $('edit-sheet').hidden = true;
+  $('approve-sheet').hidden = false;
+  document.querySelector('#clip-dialog .clip-actions').hidden = true;
+}
+function closeApproveSheet() {
+  $('approve-sheet').hidden = true;
+  const acts = document.querySelector('#clip-dialog .clip-actions'); if (acts) acts.hidden = false;
+}
+$('approve-cancel').addEventListener('click', closeApproveSheet);
+$('approve-sheet').addEventListener('submit', async event => {
+  event.preventDefault();
+  if (!currentClip) return;
+  const reasons = all('#like-chips [aria-pressed=true]').map(chip => chip.dataset.reason);
+  const note = $('approve-note').value.trim();
+  const clip = currentClip;
+  closeApproveSheet();
+  await changeClip('approve');
+  if (reasons.length || note) {
+    try { await api(APP, '/api/feedback', {method:'POST', json:{kind:'approve', clip_id:clip.id, title:clip.title, source:clip.source_title, reasons, note}}); }
+    catch { notify('Approved. Reason not saved: run ./start.sh.'); }
+  }
+});
+
+// Rating (2026-11-19): tap 1-10 instead of approve/reject. 6+ = approved, 5 or less = rejected. Below 10 asks what would make it a 10.
+let rateScore = 0;
+function renderRateRow() {
+  const row = $('rate-row'); if (!row) return;
+  const start = currentClip?.my_score || 5;
+  const val = node('span', 'rate-val', start + '/10');
+  const r = document.createElement('input');
+  r.type = 'range'; r.min = '1'; r.max = '10'; r.step = '1'; r.value = String(start); r.className = 'rate-slider';
+  const paint = () => { val.textContent = r.value + '/10'; r.style.setProperty('--p', ((r.value - 1) / 9 * 100) + '%'); };
+  r.addEventListener('input', paint);
+  r.addEventListener('change', () => pickRate(Number(r.value)));  // fires on release
+  paint();
+  row.replaceChildren(r, val);
+}
+async function pickRate(n) {
+  if (!currentClip || clipBusy) return;
+  rateScore = n;
+  if (n === 10) return saveRate('');
+  $('rate-q').textContent = n + '/10. What would make it a 10?';
+  $('rate-note').value = '';
+  $('rate-sheet').hidden = false;
+  document.querySelector('#clip-dialog .clip-actions').hidden = true;
+  $('rate-note').focus();
+}
+function closeRateSheet() {
+  $('rate-sheet').hidden = true;
+  const acts = document.querySelector('#clip-dialog .clip-actions'); if (acts) acts.hidden = false;
+}
+async function saveRate(note) {
+  const clip = currentClip, n = rateScore;
+  closeRateSheet();
+  clip.my_score = n;
+  await changeClip(n >= 6 ? 'approve' : 'reject');
+  try { await api(APP, '/api/feedback', {method:'POST', json:{kind:'rating', score:n, clip_id:clip.id, title:clip.title, source:clip.source_title, note}}); notify(n + '/10 saved. The next clips learn from it.'); }
+  catch { notify('Rated, but feedback not saved: run ./start.sh.'); }
+}
+$('rate-cancel').addEventListener('click', closeRateSheet);
+$('rate-sheet').addEventListener('submit', e => { e.preventDefault(); saveRate($('rate-note').value.trim()); });
+$('rate-note').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('rate-sheet').requestSubmit(); } });
+
+// Approve moment (2026-11-19): button pulse + ring, a check that draws itself over the video, then glide to the next clip.
+function celebrateApprove(id) {
+  const btn = document.querySelector('#clip-dialog [data-action=approve]');
+  const frame = $('clip-player');
+  const calm = reducedMotion.matches;
+  if (btn) { btn.classList.remove('is-approved'); void btn.offsetWidth; btn.classList.add('is-approved'); }
+  if (frame && !calm) {
+    frame.querySelector('.approve-stamp')?.remove();
+    const stamp = document.createElement('div');
+    stamp.className = 'approve-stamp';
+    stamp.innerHTML = '<div class="approve-disc"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27.5l7.2 7.2L37.5 19"/></svg></div><span>Approved</span>';
+    frame.append(stamp);
+    frame.classList.remove('approve-glow'); void frame.offsetWidth; frame.classList.add('approve-glow');
+    setTimeout(() => stamp.remove(), 1500);
+  }
+  notify('Approved. Ready to export.');
+  const next = viewerClips[viewerClips.indexOf(id) + 1];
+  if (next != null) setTimeout(() => { if (currentClip?.id === id && $('clip-dialog').open) stepClip(1); }, calm ? 600 : 1250);
+}
+
+// Edit sheet (2026-11-19, simplified): type the change, headless Claude (on the VI Clips server) turns it into edits and re-cuts.
+function openEditSheet() {
+  if (!currentClip || clipBusy) return;
+  $('ed-text').value = '';
+  $('reject-sheet').hidden = true;
+  $('edit-sheet').hidden = false;
+  document.querySelector('#clip-dialog .clip-actions').hidden = true;
+  $('ed-text').focus();
+}
+function closeEditSheet() {
+  $('edit-sheet').hidden = true;
+  const acts = document.querySelector('#clip-dialog .clip-actions'); if (acts) acts.hidden = false;
+}
+$('edit-cancel').addEventListener('click', closeEditSheet);
+$('ed-text').addEventListener('keydown', e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) $('edit-sheet').requestSubmit(); });
+// The new cut lands a few seconds after /api/edit answers: poll until the clip's file is newer, then swap the player.
+async function waitForNewCut(id, since) {
+  for (let i = 0; i < 90; i++) {
+    await new Promise(r => setTimeout(r, 2000));
+    let c; try { c = await api(CF, '/api/clips/' + key(id)); } catch { continue; }
+    if (c.status !== 'rendering' && Date.parse(c.updated_at) > since + 1000) {
+      clips = clips.map(x => x.id === id ? {...x, ...c} : x);
+      renderClips();
+      if ($('clip-dialog').open && currentClip?.id === id) openClip({...currentClip, ...c});
+      notify('New version is in.');
+      return;
+    }
+  }
+}
+$('edit-sheet').addEventListener('submit', async event => {
+  event.preventDefault();
+  const text = $('ed-text').value.trim();
+  if (!currentClip || !text) return;
+  const c = currentClip, save = $('edit-save');
+  save.disabled = true; save.firstChild.textContent = 'Applying…'; $('ed-text').disabled = true;
+  try {
+    const t0 = performance.now();
+    const r = await api(APP, '/api/edit', {method:'POST', json:{clip_id:c.id, text}, timeout:200000});
+    closeEditSheet();
+    const secs = ((performance.now() - t0) / 1000).toFixed(1);
+    if (!r.changes || !r.changes.length) notify(r.summary || 'Nothing to change');
+    else if (r.fast) notify('Done in ' + secs + 's: ' + r.summary);
+    else notify('Re-cutting (about a minute): ' + r.summary);
+    const tResp = Date.now();
+    await refreshCF();
+    const fresh = clips.find(x => x.id === c.id);
+    if (fresh && $('clip-dialog').open && currentClip?.id === c.id) openClip(fresh);
+    if (r.changes && r.changes.length) waitForNewCut(c.id, tResp);
+  } catch (error) {
+    notify(error.message);
+  } finally { save.disabled = false; save.firstChild.textContent = 'Apply'; $('ed-text').disabled = false; }
+});
+</script>
+</body>
+</html>
+

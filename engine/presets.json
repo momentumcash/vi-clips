@@ -1,0 +1,47 @@
+{
+  "clean_podcast": {
+    "label": "Clean podcast",
+    "font": "Inter", "font_file": "Inter-Bold.ttf", "bold": true, "italic_emphasis": false,
+    "size": 62, "case": "sentence",
+    "primary": "#FFFFFF", "accent": "#FFE27A", "outline": "#000000", "outline_alpha": 0.42, "outline_w": 16, "shadow": 0,
+    "box": true,
+    "words_per_beat": 8, "max_lines": 2, "max_chars_line": 26,
+    "position": 0.68, "animation": "fade", "progress_bar": false, "bar_color": "#FFFFFF"
+  },
+  "gaming": {
+    "label": "Gaming",
+    "font": "Archivo Black", "font_file": "ArchivoBlack.ttf", "bold": false, "italic_emphasis": false,
+    "size": 84, "case": "upper",
+    "primary": "#FFFFFF", "accent": "#8CFF3F", "outline": "#0A0A0A", "outline_alpha": 1.0, "outline_w": 7, "shadow": 4,
+    "box": false,
+    "words_per_beat": 2, "max_lines": 1, "max_chars_line": 16,
+    "position": 0.62, "animation": "pop", "progress_bar": true, "bar_color": "#8CFF3F"
+  },
+  "bold_entertainment": {
+    "label": "Bold entertainment",
+    "font": "Anton", "font_file": "Anton-Regular.ttf", "bold": false, "italic_emphasis": false,
+    "size": 112, "case": "upper",
+    "primary": "#FFFFFF", "accent": "#FFFF00", "outline": "#000000", "outline_alpha": 1.0, "outline_w": 6, "shadow": 0,
+    "box": false,
+    "words_per_beat": 3, "max_lines": 2, "max_chars_line": 14,
+    "position": 0.64, "animation": "pop", "progress_bar": false, "bar_color": "#FFFF00"
+  },
+  "minimal_cinematic": {
+    "label": "Minimal cinematic",
+    "font": "Instrument Serif", "font_file": "InstrumentSerif-Regular.ttf", "bold": false, "italic_emphasis": true,
+    "size": 80, "case": "sentence",
+    "primary": "#F4F0E8", "accent": "#F4F0E8", "outline": "#000000", "outline_alpha": 0.55, "outline_w": 1.5, "shadow": 2,
+    "box": false,
+    "words_per_beat": 6, "max_lines": 2, "max_chars_line": 28,
+    "position": 0.70, "animation": "fade", "progress_bar": false, "bar_color": "#F4F0E8"
+  },
+  "high_energy": {
+    "label": "High energy",
+    "font": "Poppins", "font_file": "Poppins-Bold.ttf", "bold": true, "italic_emphasis": false,
+    "size": 104, "case": "upper",
+    "primary": "#FFFFFF", "accent": "#FF6A2B", "outline": "#000000", "outline_alpha": 1.0, "outline_w": 8, "shadow": 0,
+    "box": false,
+    "words_per_beat": 1, "max_lines": 1, "max_chars_line": 12,
+    "position": 0.60, "animation": "pop_big", "progress_bar": true, "bar_color": "#FF6A2B"
+  }
+}
