@@ -2,7 +2,7 @@
 
 Turn long GTA 6 streams and videos into captioned 9:16 clips, on your Mac. Paste a link (or a live stream), it finds the moments worth posting, cuts them with a hook on top, and you approve, rate or edit them in plain words.
 
-by @momentumcash · MIT · **macOS only (Apple Silicon)**: it uses VideoToolbox encoding and Apple Vision face tracking.
+by @momentumcash · MIT · **Built for Apple Silicon Macs.** On Windows or Linux? See [WINDOWS.md](WINDOWS.md): one prompt and your AI ports it for you.
 
 > Unofficial fan tool. Not affiliated with or endorsed by Rockstar Games or Take-Two Interactive.
 
